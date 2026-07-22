@@ -36,8 +36,8 @@ const heroEntranceVariants = {
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-36 pb-20 sm:pt-40 sm:pb-28">
-      <DigitalPetalsShader className="opacity-40" />
+    <section id="top" className="relative overflow-hidden pt-16 pb-16 sm:pt-20 sm:pb-20">
+      <DigitalPetalsShader className="opacity-50" />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg via-bg/70 to-bg/40"
