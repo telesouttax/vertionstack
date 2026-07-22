@@ -26,7 +26,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 
 const title = "Vertion Stack: a camada de tecnologia que faltava no seu negócio";
 const description =
-  "Automação de atendimento, sistemas sob medida, dashboards e sites para pequenos e médios negócios de qualquer segmento. Entrega em 3 a 7 dias úteis.";
+  "Automação de atendimento, sistemas sob medida, dashboards e sites para pequenos e médios negócios de qualquer segmento. Sites e landing pages saem em 3 a 7 dias úteis.";
 
 export const metadata: Metadata = {
   title,

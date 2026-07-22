@@ -74,7 +74,7 @@ export const HOW_IT_WORKS = [
   {
     number: "04",
     title: "Entrega e suporte",
-    description: "Seu projeto no ar em 3 a 7 dias úteis, com suporte pra ajustes.",
+    description: "Seu projeto no ar dentro do prazo combinado na proposta, com suporte pra ajustes.",
   },
 ] as const;
 
@@ -129,7 +129,8 @@ export const FAQS = [
   },
   {
     pergunta: "Quanto tempo demora?",
-    resposta: "A entrega costuma sair em 3 a 7 dias úteis, dependendo da complexidade do projeto.",
+    resposta:
+      "Sites e landing pages costumam sair em 3 a 7 dias úteis. Dashboards e automações variam de acordo com a complexidade, e o prazo exato vem definido na proposta, depois de entendermos sua necessidade.",
   },
   {
     pergunta: "Preciso assinar contrato longo?",

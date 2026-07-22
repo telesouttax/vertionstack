@@ -30,7 +30,10 @@ export function SpeedHighlight() {
             3-7 dias úteis
           </p>
           <p className="mt-3 font-mono text-sm uppercase tracking-wide text-white/50">
-            do diagnóstico à entrega
+            pra sites e landing pages
+          </p>
+          <p className="mt-1 font-body text-sm text-white/50">
+            Dashboards e automações têm prazo combinado conforme a complexidade.
           </p>
         </div>
       </div>
