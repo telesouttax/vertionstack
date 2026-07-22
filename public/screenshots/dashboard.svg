@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" fill="none">
+  <rect width="1400" height="900" fill="#F5F6F9" />
+
+  <!-- top bar -->
+  <rect x="0" y="0" width="1400" height="72" fill="#FFFFFF" />
+  <rect x="0" y="71" width="1400" height="1" fill="#E1E4EC" />
+  <circle cx="48" cy="36" r="14" fill="#1C56A6" />
+  <rect x="72" y="28" width="120" height="16" rx="8" fill="#10182B" />
+  <rect x="1180" y="22" width="90" height="28" rx="14" fill="#F5F6F9" />
+  <circle cx="1320" cy="36" r="18" fill="#E1E4EC" />
+
+  <!-- sidebar -->
+  <rect x="0" y="72" width="220" height="828" fill="#FFFFFF" />
+  <rect x="220" y="72" width="1" height="828" fill="#E1E4EC" />
+  <rect x="32" y="112" width="156" height="36" rx="10" fill="#1C56A6" />
+  <rect x="32" y="168" width="120" height="14" rx="7" fill="#4A5468" />
+  <rect x="32" y="208" width="130" height="14" rx="7" fill="#4A5468" />
+  <rect x="32" y="248" width="100" height="14" rx="7" fill="#4A5468" />
+  <rect x="32" y="288" width="140" height="14" rx="7" fill="#4A5468" />
+
+  <!-- stat cards -->
+  <g>
+    <rect x="252" y="112" width="256" height="120" rx="16" fill="#FFFFFF" stroke="#E1E4EC" />
+    <rect x="280" y="140" width="90" height="12" rx="6" fill="#4A5468" />
+    <rect x="280" y="168" width="140" height="28" rx="6" fill="#10182B" />
+    <path d="M280 210 L300 198 L320 206 L340 188 L360 200" stroke="#1C56A6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <g>
+    <rect x="524" y="112" width="256" height="120" rx="16" fill="#FFFFFF" stroke="#E1E4EC" />
+    <rect x="552" y="140" width="90" height="12" rx="6" fill="#4A5468" />
+    <rect x="552" y="168" width="140" height="28" rx="6" fill="#10182B" />
+    <path d="M552 205 L572 200 L592 210 L612 190 L632 198" stroke="#5B4FCF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <g>
+    <rect x="796" y="112" width="256" height="120" rx="16" fill="#FFFFFF" stroke="#E1E4EC" />
+    <rect x="824" y="140" width="90" height="12" rx="6" fill="#4A5468" />
+    <rect x="824" y="168" width="140" height="28" rx="6" fill="#10182B" />
+    <path d="M824 200 L844 208 L864 195 L884 202 L904 190" stroke="#1C56A6" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <g>
+    <rect x="1068" y="112" width="264" height="120" rx="16" fill="#FFFFFF" stroke="#E1E4EC" />
+    <rect x="1096" y="140" width="90" height="12" rx="6" fill="#4A5468" />
+    <rect x="1096" y="168" width="140" height="28" rx="6" fill="#10182B" />
+    <path d="M1096 202 L1116 190 L1136 198 L1156 182 L1176 192" stroke="#5B4FCF" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- big chart -->
+  <rect x="252" y="256" width="640" height="340" rx="16" fill="#FFFFFF" stroke="#E1E4EC" />
+  <rect x="284" y="284" width="160" height="16" rx="8" fill="#10182B" />
+  <g stroke="#E1E4EC">
+    <line x1="284" y1="360" x2="860" y2="360" />
+    <line x1="284" y1="420" x2="860" y2="420" />
+    <line x1="284" y1="480" x2="860" y2="480" />
+    <line x1="284" y1="540" x2="860" y2="540" />
+  </g>
+  <path d="M300 500 L360 460 L420 480 L480 400 L540 420 L600 340 L660 380 L720 320 L780 360 L840 300" stroke="url(#dashGrad)" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+  <defs>
+    <linearGradient id="dashGrad" x1="284" y1="0" x2="860" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1C56A6" />
+      <stop offset="1" stop-color="#5B4FCF" />
+    </linearGradient>
+  </defs>
+
+  <!-- side list -->
+  <rect x="920" y="256" width="412" height="340" rx="16" fill="#FFFFFF" stroke="#E1E4EC" />
+  <rect x="952" y="284" width="140" height="16" rx="8" fill="#10182B" />
+  <g>
+    <rect x="952" y="328" width="348" height="52" rx="12" fill="#F5F6F9" />
+    <rect x="952" y="392" width="348" height="52" rx="12" fill="#F5F6F9" />
+    <rect x="952" y="456" width="348" height="52" rx="12" fill="#F5F6F9" />
+    <rect x="952" y="520" width="348" height="52" rx="12" fill="#F5F6F9" />
+  </g>
+
+  <!-- placeholder badge -->
+  <rect x="1132" y="836" width="236" height="40" rx="20" fill="#10182B" fill-opacity="0.85" />
+  <text x="1250" y="862" font-family="monospace" font-size="16" fill="#FFFFFF" text-anchor="middle">PLACEHOLDER</text>
+</svg>

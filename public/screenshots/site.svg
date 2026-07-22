@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" fill="none">
+  <rect width="1400" height="900" fill="#F5F6F9" />
+
+  <!-- browser chrome -->
+  <rect x="0" y="0" width="1400" height="56" fill="#FFFFFF" />
+  <rect x="0" y="55" width="1400" height="1" fill="#E1E4EC" />
+  <circle cx="36" cy="28" r="7" fill="#E1E4EC" />
+  <circle cx="60" cy="28" r="7" fill="#E1E4EC" />
+  <circle cx="84" cy="28" r="7" fill="#E1E4EC" />
+  <rect x="500" y="14" width="400" height="28" rx="14" fill="#F5F6F9" />
+
+  <!-- nav -->
+  <rect x="0" y="56" width="1400" height="80" fill="#FFFFFF" />
+  <rect x="0" y="135" width="1400" height="1" fill="#E1E4EC" />
+  <circle cx="88" cy="96" r="16" fill="#1C56A6" />
+  <rect x="116" y="88" width="120" height="16" rx="8" fill="#10182B" />
+  <rect x="620" y="90" width="80" height="14" rx="7" fill="#4A5468" />
+  <rect x="740" y="90" width="90" height="14" rx="7" fill="#4A5468" />
+  <rect x="1180" y="80" width="160" height="36" rx="18" fill="url(#siteGrad)" />
+
+  <!-- hero -->
+  <rect x="0" y="136" width="1400" height="380" fill="#F5F6F9" />
+  <rect x="0" y="515" width="1400" height="1" fill="#E1E4EC" />
+  <rect x="500" y="200" width="400" height="24" rx="12" fill="#FFFFFF" stroke="#E1E4EC" />
+  <rect x="380" y="256" width="640" height="40" rx="10" fill="#10182B" />
+  <rect x="460" y="304" width="480" height="40" rx="10" fill="#10182B" />
+  <rect x="520" y="368" width="360" height="16" rx="8" fill="#4A5468" />
+  <rect x="560" y="392" width="280" height="16" rx="8" fill="#4A5468" />
+  <rect x="576" y="432" width="150" height="44" rx="22" fill="url(#siteGrad)" />
+  <rect x="742" y="432" width="150" height="44" rx="22" fill="#FFFFFF" stroke="#E1E4EC" />
+
+  <!-- feature cards -->
+  <rect x="140" y="576" width="330" height="220" rx="16" fill="#FFFFFF" stroke="#E1E4EC" />
+  <circle cx="188" cy="624" r="20" fill="#1C56A6" />
+  <rect x="172" y="664" width="200" height="16" rx="8" fill="#10182B" />
+  <rect x="172" y="696" width="230" height="12" rx="6" fill="#4A5468" />
+  <rect x="172" y="716" width="180" height="12" rx="6" fill="#4A5468" />
+
+  <rect x="536" y="576" width="330" height="220" rx="16" fill="#FFFFFF" stroke="#E1E4EC" />
+  <circle cx="584" cy="624" r="20" fill="#5B4FCF" />
+  <rect x="568" y="664" width="200" height="16" rx="8" fill="#10182B" />
+  <rect x="568" y="696" width="230" height="12" rx="6" fill="#4A5468" />
+  <rect x="568" y="716" width="180" height="12" rx="6" fill="#4A5468" />
+
+  <rect x="932" y="576" width="330" height="220" rx="16" fill="#FFFFFF" stroke="#E1E4EC" />
+  <circle cx="980" cy="624" r="20" fill="#1C56A6" />
+  <rect x="964" y="664" width="200" height="16" rx="8" fill="#10182B" />
+  <rect x="964" y="696" width="230" height="12" rx="6" fill="#4A5468" />
+  <rect x="964" y="716" width="180" height="12" rx="6" fill="#4A5468" />
+
+  <defs>
+    <linearGradient id="siteGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1C56A6" />
+      <stop offset="1" stop-color="#5B4FCF" />
+    </linearGradient>
+  </defs>
+
+  <!-- placeholder badge -->
+  <rect x="1132" y="836" width="236" height="40" rx="20" fill="#10182B" fill-opacity="0.85" />
+  <text x="1250" y="862" font-family="monospace" font-size="16" fill="#FFFFFF" text-anchor="middle">PLACEHOLDER</text>
+</svg>
