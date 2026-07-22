@@ -43,7 +43,7 @@ export function Footer() {
         </div>
 
         <p className="font-body text-xs text-muted">
-          &copy; {year} Vertion Stack. Todos os direitos reservados.
+          Rio de Janeiro, RJ &middot; &copy; {year} Vertion Stack. Todos os direitos reservados.
         </p>
       </div>
     </footer>

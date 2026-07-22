@@ -11,8 +11,11 @@ export function FinalCta() {
           Sem compromisso. É uma conversa de 15 minutos pra entender se a gente pode
           ajudar.
         </p>
+        <p className="mt-2 font-body text-sm text-muted">
+          O investimento costuma se pagar com 1 ou 2 clientes novos por mês.
+        </p>
         <div className="mt-8 flex justify-center">
-          <WhatsAppButton />
+          <WhatsAppButton label="Quero saber se faz sentido pra mim" />
         </div>
       </div>
     </section>

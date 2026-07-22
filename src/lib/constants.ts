@@ -98,28 +98,51 @@ export const SHOWCASE_IMAGES = [
   },
 ] as const;
 
-// TODO: substituir por depoimentos reais assim que os primeiros projetos forem entregues.
-// São ilustrativos de propósito (sem nome de cliente real) — ver aviso na seção Testimonials.
-export const TESTIMONIALS = [
+export const TRUST_POINTS = [
   {
-    quote:
-      "Antes eu perdia cliente porque não dava conta de responder todo mundo no WhatsApp. Agora o atendimento roda sozinho e eu só entro pra fechar.",
-    role: "Dono de barbearia",
+    title: "Contato direto com quem constrói",
+    description: "Você fala com a gente, os fundadores. Sem SAC terceirizado no meio do caminho.",
+    icon: "UserCheck",
   },
   {
-    quote:
-      "A agenda parou de bagunçar. Cada horário cai certinho no sistema e ninguém mais marca em cima do outro.",
-    role: "Gestora de clínica",
+    title: "Ajuste incluso no suporte inicial",
+    description: "Se algo não ficar do jeito certo, corrigimos sem custo extra durante o suporte.",
+    icon: "Wrench",
   },
   {
-    quote:
-      "O site trouxe cliente que nem sabia que a gente existia. Antes disso, era só indicação.",
-    role: "Advogado autônomo",
+    title: "Sem contrato de fidelidade",
+    description: "Você contrata o projeto que precisa, quando precisa. Sem amarra de longo prazo.",
+    icon: "Unlock",
   },
   {
-    quote:
-      "Consigo ver o mês inteiro num painel só. Antes era planilha espalhada e achismo pra tomar decisão.",
-    role: "Dona de salão de beleza",
+    title: "Prazo e escopo por escrito",
+    description: "Antes de começar, você recebe uma proposta clara com prazo e o que será entregue.",
+    icon: "FileCheck",
+  },
+] as const;
+
+export const FAQS = [
+  {
+    pergunta: "Quanto custa?",
+    resposta:
+      "Varia de acordo com o que você precisa (automação, sistema, dashboard ou site). Na conversa inicial pelo WhatsApp já te passamos uma ideia de valor, sem compromisso.",
+  },
+  {
+    pergunta: "Quanto tempo demora?",
+    resposta: "A entrega costuma sair em 3 a 7 dias úteis, dependendo da complexidade do projeto.",
+  },
+  {
+    pergunta: "Preciso assinar contrato longo?",
+    resposta: "Não. Você contrata o projeto que precisa, sem fidelidade forçada.",
+  },
+  {
+    pergunta: "E se eu não gostar do resultado?",
+    resposta: "Ajustamos o que for preciso durante o suporte inicial, até ficar do jeito que você precisa.",
+  },
+  {
+    pergunta: "Funciona pro meu tipo de negócio?",
+    resposta:
+      "Atendemos qualquer segmento, de barbearia a escritório de advocacia. Se seu negócio tem atendimento, agenda ou processo repetitivo, provavelmente dá pra automatizar.",
   },
 ] as const;
 
