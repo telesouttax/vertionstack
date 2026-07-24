@@ -29,6 +29,7 @@ const description =
   "Automação de atendimento, sistemas sob medida, dashboards e sites para pequenos e médios negócios de qualquer segmento. Sites e landing pages saem em 3 a 7 dias úteis.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://vertionstack.com"),
   title,
   description,
   icons: {
@@ -39,12 +40,13 @@ export const metadata: Metadata = {
     description,
     locale: "pt_BR",
     type: "website",
-    // TODO: adicionar imagem 1200x630 real em /public/og-image.png e referenciar aqui
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Vertion Stack" }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title,
     description,
+    images: ["/og-image.png"],
   },
 };
 
