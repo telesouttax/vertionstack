@@ -78,23 +78,23 @@ export const HOW_IT_WORKS = [
   },
 ] as const;
 
-// TODO: substituir estes SVGs placeholder pelos prints reais (PNG/JPG) em public/screenshots/
-// mantendo os mesmos nomes de arquivo ou atualizando o campo "src" abaixo.
+// Mockups ilustrativos de um negócio fictício (Barbearia Vintage), usados como exemplo
+// de como fica cada entrega. Serão trocados por prints reais conforme os projetos entregues.
 export const SHOWCASE_IMAGES = [
   {
-    src: "/screenshots/dashboard.svg",
+    src: "/screenshots/site.png",
+    alt: "Mockup ilustrativo de um site institucional com catálogo de serviços",
+    label: "Site",
+  },
+  {
+    src: "/screenshots/dashboard.png",
     alt: "Mockup ilustrativo de um dashboard com métricas do negócio",
     label: "Dashboard",
   },
   {
-    src: "/screenshots/sistema.svg",
-    alt: "Mockup ilustrativo de um sistema de gestão sob medida",
-    label: "Sistema sob medida",
-  },
-  {
-    src: "/screenshots/site.svg",
-    alt: "Mockup ilustrativo de um site institucional",
-    label: "Site",
+    src: "/screenshots/automacao.png",
+    alt: "Mockup ilustrativo de uma automação de atendimento no WhatsApp",
+    label: "Automação de atendimento",
   },
 ] as const;
 
