@@ -88,13 +88,13 @@ export const SHOWCASE_IMAGES = [
   },
   {
     src: "/screenshots/dashboard.png",
-    alt: "Mockup ilustrativo de um dashboard com métricas do negócio",
+    alt: "Mockup ilustrativo de um dashboard com gráficos e automação de lembretes",
     label: "Dashboard",
   },
   {
-    src: "/screenshots/automacao.png",
-    alt: "Mockup ilustrativo de uma automação de atendimento no WhatsApp",
-    label: "Automação de atendimento",
+    src: "/screenshots/cadastro.png",
+    alt: "Mockup ilustrativo de um sistema de cadastro de clientes",
+    label: "Cadastro de clientes",
   },
 ] as const;
 
