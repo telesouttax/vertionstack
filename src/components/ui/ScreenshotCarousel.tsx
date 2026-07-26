@@ -43,7 +43,7 @@ export function ScreenshotCarousel({ images }: ScreenshotCarouselProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
-          className="h-full w-full object-contain"
+          className="h-full w-full object-cover object-top"
         />
       </AnimatePresence>
 
