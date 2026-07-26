@@ -92,9 +92,9 @@ export const SHOWCASE_IMAGES = [
     label: "Dashboard",
   },
   {
-    src: "/screenshots/cadastro.png",
-    alt: "Mockup ilustrativo de um sistema de cadastro de clientes",
-    label: "Cadastro de clientes",
+    src: "/screenshots/padaria.jpg",
+    alt: "Mockup ilustrativo de uma landing page de padaria com catálogo de produtos",
+    label: "Landing page",
   },
 ] as const;
 
