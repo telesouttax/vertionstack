@@ -85,7 +85,7 @@ export const Card = ({
         boxShadow:
           "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 0 60px 6px rgba(124,58,237,0.25)",
       }}
-      className="mx-auto -mt-12 h-[26rem] w-full max-w-5xl rounded-[30px] border-4 border-primary/25 bg-black p-2 md:h-[36rem] md:p-6"
+      className="mx-auto -mt-12 aspect-video w-full max-w-5xl rounded-[30px] border-4 border-primary/25 bg-black p-2 md:p-6"
     >
       <div className="h-full w-full overflow-hidden rounded-2xl bg-bg">
         {children}

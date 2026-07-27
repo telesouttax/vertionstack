@@ -82,12 +82,12 @@ export const HOW_IT_WORKS = [
 // de como fica cada entrega. Serão trocados por prints reais conforme os projetos entregues.
 export const SHOWCASE_IMAGES = [
   {
-    src: "/screenshots/site.png",
+    src: "/screenshots/site.jpg",
     alt: "Mockup ilustrativo de um site institucional com catálogo de serviços",
     label: "Site",
   },
   {
-    src: "/screenshots/dashboard.png",
+    src: "/screenshots/dashboard.jpg",
     alt: "Mockup ilustrativo de um dashboard com gráficos e automação de lembretes",
     label: "Dashboard",
   },
