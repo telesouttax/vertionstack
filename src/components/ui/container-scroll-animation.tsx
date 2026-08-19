@@ -50,7 +50,7 @@ export function ContainerScroll({
             <span className="h-2.5 w-2.5 rounded-full bg-carbon-200" />
           </div>
 
-          <div className="aspect-[16/10] w-full overflow-hidden rounded-[1.25rem] border border-line bg-surface-raised">
+          <div className="aspect-[16/9] w-full overflow-hidden rounded-[1.25rem] border border-line bg-surface-raised">
             {children}
           </div>
         </motion.div>

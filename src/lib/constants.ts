@@ -124,18 +124,15 @@ export const HOW_IT_WORKS = [
 // cada entrega. Serão trocados por prints reais conforme os projetos entregues.
 export const SHOWCASE_IMAGES = [
   {
-    src: "/screenshots/site.jpg",
-    alt: "Exemplo de site institucional com catálogo de serviços",
-    label: "Site institucional",
-  },
-  {
+    id: "dashboard",
     src: "/screenshots/dashboard.jpg",
-    alt: "Exemplo de dashboard com gráficos e automação de lembretes",
+    alt: "Exemplo de dashboard de uma barbearia, com previsão de faltas e lembretes automáticos",
     label: "Dashboard",
   },
   {
+    id: "landing",
     src: "/screenshots/padaria.jpg",
-    alt: "Exemplo de landing page de padaria com catálogo de produtos",
+    alt: "Exemplo de landing page de uma padaria, com catálogo de produtos",
     label: "Landing page",
   },
 ] as const;
