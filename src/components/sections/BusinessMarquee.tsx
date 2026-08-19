@@ -2,6 +2,8 @@ import {
   Building2,
   Calculator,
   Dumbbell,
+  HeartPulse,
+  PawPrint,
   Scale,
   Scissors,
   Sparkles,
@@ -12,7 +14,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { BUSINESS_SEGMENTS } from "@/lib/constants";
-import { glowProps } from "@/lib/glow";
 
 const ICONS: Record<string, LucideIcon> = {
   Scissors,
@@ -25,39 +26,36 @@ const ICONS: Record<string, LucideIcon> = {
   Calculator,
   Building2,
   Dumbbell,
+  PawPrint,
+  HeartPulse,
 };
-
-const TILTS = [-3, 2, -4, 3];
 
 export function BusinessMarquee() {
   return (
-    <section className="border-y border-border bg-surface py-10">
+    <section className="border-y border-line bg-surface-raised py-12 sm:py-14">
+      <p className="container-x text-center font-mono text-label uppercase text-ink-faint">
+        Atendemos qualquer segmento
+      </p>
+
       <p className="sr-only">
-        Atendemos: {BUSINESS_SEGMENTS.map((s) => s.label).join(", ")} e outros tipos de
+        Já trabalhamos com {BUSINESS_SEGMENTS.map((s) => s.label).join(", ")} e outros tipos de
         negócio.
       </p>
 
-      <div className="relative overflow-hidden" aria-hidden="true">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-surface to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-surface to-transparent" />
-
-        <div className="flex w-max gap-6 motion-safe:animate-marquee motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:gap-4 motion-reduce:px-6">
+      <div className="relative mt-8 overflow-hidden mask-fade-x" aria-hidden="true">
+        <div className="flex w-max gap-3 motion-safe:animate-marquee motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:px-6">
           {[...BUSINESS_SEGMENTS, ...BUSINESS_SEGMENTS].map((segment, i) => {
             const Icon = ICONS[segment.icon];
             return (
-              <div
+              <span
                 key={`${segment.label}-${i}`}
-                data-glow=""
-                style={{ ...glowProps({ radius: 16 }).style, rotate: `${TILTS[i % TILTS.length]}deg` }}
-                className="flex w-32 shrink-0 flex-col items-center gap-2 rounded-2xl border border-border bg-surface p-4 shadow-sm motion-reduce:[rotate:0deg]"
+                className="group flex shrink-0 items-center gap-2.5 rounded-2xl border border-line bg-white px-4 py-3 shadow-card transition-colors duration-300 hover:border-violet-200"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-gradient">
-                  <Icon className="h-5 w-5 text-white" aria-hidden="true" />
-                </div>
-                <span className="text-center font-mono text-xs uppercase tracking-wide text-ink">
+                <Icon className="h-4 w-4 text-brand" aria-hidden="true" />
+                <span className="whitespace-nowrap text-sm font-medium text-ink">
                   {segment.label}
                 </span>
-              </div>
+              </span>
             );
           })}
         </div>

@@ -1,95 +1,60 @@
 "use client";
 import React, { useRef } from "react";
-import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+import { useScroll, useTransform, motion, useReducedMotion } from "framer-motion";
 
-export const ContainerScroll = ({
+/**
+ * Moldura de dispositivo que "deita" e vai se endireitando conforme a página
+ * rola — dá a sensação de estar abrindo a tela do projeto na sua frente.
+ */
+export function ContainerScroll({
   titleComponent,
   children,
 }: {
-  titleComponent: string | React.ReactNode;
+  titleComponent: React.ReactNode;
   children: React.ReactNode;
-}) => {
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: containerRef,
+    offset: ["start end", "end start"],
   });
-  const [isMobile, setIsMobile] = React.useState(false);
 
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => {
-      window.removeEventListener("resize", checkMobile);
-    };
-  }, []);
+  const rotate = useTransform(scrollYProgress, [0, 0.55], [22, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.55], [0.92, 1]);
+  const lift = useTransform(scrollYProgress, [0, 0.55], [60, 0]);
 
-  const scaleDimensions = () => {
-    return isMobile ? [0.7, 0.9] : [1.05, 1];
-  };
-
-  const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
-  const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const motionStyle = prefersReducedMotion
+    ? undefined
+    : { rotateX: rotate, scale, translateY: lift };
 
   return (
-    <div
-      className="relative flex h-[50rem] items-center justify-center p-2 md:h-[70rem] md:p-20"
-      ref={containerRef}
-    >
-      <div
-        className="relative w-full py-10 md:py-40"
-        style={{
-          perspective: "1000px",
-        }}
-      >
-        <Header translate={translate} titleComponent={titleComponent} />
-        <Card rotate={rotate} translate={translate} scale={scale}>
-          {children}
-        </Card>
+    <div ref={containerRef} className="container-x">
+      <div className="mx-auto max-w-3xl text-center">{titleComponent}</div>
+
+      <div className="mt-12 sm:mt-16" style={{ perspective: "1200px" }}>
+        <motion.div
+          style={motionStyle}
+          className="relative mx-auto w-full max-w-5xl rounded-panel border border-line bg-white p-2 shadow-lift sm:p-3"
+        >
+          {/* Halo violeta por trás da moldura */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-6 -z-10 rounded-panel bg-brand-vivid/15 blur-[70px]"
+          />
+
+          {/* Barra da janela */}
+          <div className="flex items-center gap-1.5 px-3 py-2.5" aria-hidden="true">
+            <span className="h-2.5 w-2.5 rounded-full bg-carbon-200" />
+            <span className="h-2.5 w-2.5 rounded-full bg-carbon-200" />
+            <span className="h-2.5 w-2.5 rounded-full bg-carbon-200" />
+          </div>
+
+          <div className="aspect-[16/10] w-full overflow-hidden rounded-[1.25rem] border border-line bg-surface-raised">
+            {children}
+          </div>
+        </motion.div>
       </div>
     </div>
   );
-};
-
-export const Header = ({ translate, titleComponent }: any) => {
-  return (
-    <motion.div
-      style={{
-        translateY: translate,
-      }}
-      className="mx-auto max-w-3xl text-center"
-    >
-      {titleComponent}
-    </motion.div>
-  );
-};
-
-export const Card = ({
-  rotate,
-  scale,
-  children,
-}: {
-  rotate: MotionValue<number>;
-  scale: MotionValue<number>;
-  translate: MotionValue<number>;
-  children: React.ReactNode;
-}) => {
-  return (
-    <motion.div
-      style={{
-        rotateX: rotate,
-        scale,
-        boxShadow:
-          "0 0 #0000004d, 0 9px 20px #0000004a, 0 37px 37px #00000042, 0 84px 50px #00000026, 0 149px 60px #0000000a, 0 0 60px 6px rgba(124,58,237,0.25)",
-      }}
-      className="mx-auto -mt-12 aspect-video w-full max-w-5xl rounded-[30px] border-4 border-primary/25 bg-black p-2 md:p-6"
-    >
-      <div className="h-full w-full overflow-hidden rounded-2xl bg-bg">
-        {children}
-      </div>
-    </motion.div>
-  );
-};
+}

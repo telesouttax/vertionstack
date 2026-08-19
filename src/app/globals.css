@@ -2,8 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   BASE
+   ============================================================ */
+
 html {
   scroll-behavior: smooth;
+  /* compensa a navbar fixa quando o link de âncora rola a página */
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: theme("colors.surface.DEFAULT");
+  color: theme("colors.ink.DEFAULT");
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: theme("colors.brand.soft");
+  color: theme("colors.brand.deep");
+}
+
+:root {
+  --tw-ring-offset-color: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -21,85 +45,154 @@ html {
   }
 }
 
-body {
-  background-color: #0B0A12;
-  color: #F5F3FA;
+/* ============================================================
+   COMPONENTES (tokens de componente)
+   ============================================================ */
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-container px-5 sm:px-8;
+  }
+
+  .section {
+    @apply py-20 sm:py-28 lg:py-32;
+  }
+
+  /* Etiqueta mono em caixa alta que abre cada seção. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-label uppercase text-ink-faint;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-6 bg-brand;
+  }
+
+  /* Título de seção: display apertado, com a palavra-chave em serifa itálica. */
+  .h2 {
+    @apply font-display font-semibold tracking-[-0.03em] text-ink;
+    font-size: clamp(2rem, 1.35rem + 2.4vw, 3.25rem);
+    line-height: 1.05;
+  }
+
+  .h3 {
+    @apply font-display text-lg font-semibold tracking-[-0.01em] text-ink;
+  }
+
+  .lede {
+    @apply font-body text-base leading-relaxed text-ink-soft sm:text-lg;
+  }
+
+  /* Palavra de destaque: serifa itálica dentro do display. Usada 1x por título. */
+  .accent {
+    @apply font-serif italic text-brand;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .card {
+    @apply rounded-3xl border border-line bg-white shadow-card transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-violet-200 hover:shadow-lift;
+  }
+
+  /* Régua fina de separação entre blocos. */
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-line-strong to-transparent;
+  }
 }
 
-:root {
-  --tw-ring-offset-color: #0B0A12;
+/* ============================================================
+   UTILITÁRIOS DE ATMOSFERA
+   ============================================================ */
+
+@layer utilities {
+  /* Malha quadriculada bem sutil — dá "papel milimetrado" ao fundo branco. */
+  .bg-grid {
+    background-image: linear-gradient(to right, rgba(18, 16, 27, 0.045) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(18, 16, 27, 0.045) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  .bg-grid-invert {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 72px 72px;
+  }
+
+  /* Granulado que tira o "plástico" das superfícies grandes. */
+  .bg-noise::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E");
+  }
+
+  .mask-fade-x {
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent);
+  }
+
+  /* Números tabulares: métricas não "dançam" ao animar. */
+  .nums {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
-/* Spotlight glow — shared by every [data-glow] card/button.
-   --x/--y/--xp/--yp come from GlowCursorProvider (one global listener,
-   inherited via CSS custom property cascade instead of one listener per element).
-   Wrapped in @layer base so Tailwind utilities (like .absolute/.relative on the
-   element itself) always win over this — plain unlayered CSS would otherwise
-   beat utility classes regardless of source order, per the cascade layers spec. */
+/* ============================================================
+   SPOTLIGHT DE CURSOR
+   --x/--y/--xp vêm do GlowCursorProvider (um listener global).
+   No tema claro o efeito é uma borda violeta discreta, não um brilho neon.
+   ============================================================ */
+
 @layer base {
   [data-glow] {
     position: relative;
-    --base: 262;
-    --spread: 60;
-    --radius: 16;
-    --border: 2;
-    --size: 240;
-    --border-size: calc(var(--border) * 1px);
+    --radius: 24;
+    --size: 340;
     --spotlight-size: calc(var(--size) * 1px);
-    --hue: calc(var(--base) + (var(--xp, 0.5) * var(--spread)));
-    background-image: radial-gradient(
-      var(--spotlight-size) var(--spotlight-size) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
-      hsl(var(--hue) 90% 65% / var(--bg-spot-opacity, 0.08)),
-      transparent
-    );
-    background-attachment: fixed;
-  }
-
-  [data-glow]::before,
-  [data-glow]::after {
-    pointer-events: none;
-    content: "";
-    position: absolute;
-    inset: calc(var(--border-size) * -1);
-    border: var(--border-size) solid transparent;
-    border-radius: calc(var(--radius) * 1px);
-    background-attachment: fixed;
-    mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
-    mask-clip: padding-box, border-box;
-    mask-composite: intersect;
   }
 
   [data-glow]::before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: 1px solid transparent;
+    border-radius: calc(var(--radius) * 1px);
+    background-attachment: fixed;
     background-image: radial-gradient(
-      calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
-      hsl(var(--hue) 95% 55% / var(--border-spot-opacity, 1)),
+      var(--spotlight-size) var(--spotlight-size) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
+      rgba(122, 22, 224, 0.55),
       transparent 100%
     );
-    filter: brightness(1.4);
+    mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+    mask-clip: padding-box, border-box;
+    mask-composite: intersect;
+    opacity: 0;
+    transition: opacity 0.35s ease;
   }
 
-  [data-glow]::after {
-    background-image: radial-gradient(
-      calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
-      hsl(0 100% 100% / var(--border-light-opacity, 0.6)),
-      transparent 100%
-    );
+  [data-glow]:hover::before {
+    opacity: 1;
   }
 
   @media (hover: none) and (pointer: coarse) {
-    [data-glow]::before,
-    [data-glow]::after {
+    [data-glow]::before {
       display: none;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    [data-glow] {
-      background-image: none;
-    }
-
-    [data-glow]::before,
-    [data-glow]::after {
+    [data-glow]::before {
       display: none;
     }
   }

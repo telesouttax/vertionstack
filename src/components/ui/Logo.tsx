@@ -1,22 +1,33 @@
+import { cn } from "@/lib/utils";
+
 type LogoProps = {
   className?: string;
   withWordmark?: boolean;
+  /** Sobre fundo escuro o wordmark vira branco. */
+  tone?: "dark" | "light";
 };
 
-export function Logo({ className = "h-8 w-8", withWordmark = true }: LogoProps) {
+export function Logo({ className, withWordmark = true, tone = "dark" }: LogoProps) {
   return (
-    <div className="flex items-center gap-2.5">
+    <span className="flex items-center gap-2.5">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/logo.png"
         alt="Vertion Stack"
-        className={`drop-shadow-[0_0_6px_rgba(124,58,237,0.55)] ${className}`}
+        width={32}
+        height={32}
+        className={cn("h-8 w-8 shrink-0", className)}
       />
       {withWordmark && (
-        <span className="whitespace-nowrap font-heading text-base font-semibold text-ink sm:text-lg">
+        <span
+          className={cn(
+            "whitespace-nowrap font-display text-[1.0625rem] font-bold tracking-[-0.02em]",
+            tone === "dark" ? "text-ink" : "text-white"
+          )}
+        >
           Vertion Stack
         </span>
       )}
-    </div>
+    </span>
   );
 }

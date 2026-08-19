@@ -1,48 +1,78 @@
-import { Check, X } from "lucide-react";
+import { ArrowRight, Check, X } from "lucide-react";
 import { BEFORE_AFTER } from "@/lib/constants";
-import { glowProps } from "@/lib/glow";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
 
 export function BeforeAfter() {
   return (
-    <section className="py-20 sm:py-28">
-      <div className="mx-auto max-w-container px-6">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="font-heading text-3xl font-bold text-ink sm:text-4xl">
-            O antes e o depois é claro.
-          </h2>
-        </div>
+    <section id="o-problema" className="section relative overflow-hidden bg-white">
+      <div className="container-x">
+        <SectionHeading
+          eyebrow="O problema"
+          title={
+            <>
+              A diferença aparece já na <span className="accent">primeira</span> semana.
+            </>
+          }
+          description="Não é sobre ter tecnologia bonita. É sobre parar de perder cliente, tempo e dinheiro em coisa que dá pra resolver sozinho."
+        />
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          <div {...glowProps({ radius: 16 })} className="rounded-2xl border border-border bg-surface p-8">
-            <p className="font-mono text-xs uppercase tracking-wide text-muted">
+        <div className="relative mt-14 grid gap-5 lg:mt-16 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-4">
+          {/* Antes */}
+          <Reveal className="rounded-3xl border border-line bg-surface-raised p-7 sm:p-9">
+            <p className="font-mono text-label uppercase text-ink-faint">
               {BEFORE_AFTER.before.label}
             </p>
-            <ul className="mt-5 space-y-4">
+            <ul className="mt-6 space-y-4">
               {BEFORE_AFTER.before.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 font-body text-ink">
-                  <X className="mt-0.5 h-5 w-5 shrink-0 text-muted" aria-hidden="true" />
-                  <span>{item}</span>
+                <li key={item} className="flex items-start gap-3 text-ink-soft">
+                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-carbon-200">
+                    <X className="h-3 w-3 text-ink-faint" aria-hidden="true" />
+                  </span>
+                  <span className="text-[0.9375rem] leading-relaxed">{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
-          <div
-            {...glowProps({ radius: 16 })}
-            className="rounded-2xl border border-primary/30 bg-surface p-8 shadow-glow"
+          {/* Seta de transição */}
+          <Reveal
+            delay={0.1}
+            className="flex items-center justify-center lg:px-2"
           >
-            <p className="font-mono text-xs uppercase tracking-wide text-accent">
-              {BEFORE_AFTER.after.label}
-            </p>
-            <ul className="mt-5 space-y-4">
-              {BEFORE_AFTER.after.items.map((item) => (
-                <li key={item} className="flex items-start gap-3 font-body text-ink">
-                  <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <span
+              aria-hidden="true"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-brand text-white shadow-brand"
+            >
+              <ArrowRight className="h-5 w-5 rotate-90 lg:rotate-0" />
+            </span>
+          </Reveal>
+
+          {/* Depois — painel preto, onde o violeta aparece com mais força */}
+          <Reveal
+            delay={0.15}
+            className="relative overflow-hidden rounded-3xl bg-ink p-7 shadow-lift sm:p-9"
+          >
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-vivid/30 blur-[80px]"
+            />
+            <div className="relative">
+              <p className="font-mono text-label uppercase text-violet-300">
+                {BEFORE_AFTER.after.label}
+              </p>
+              <ul className="mt-6 space-y-4">
+                {BEFORE_AFTER.after.items.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand">
+                      <Check className="h-3 w-3 text-white" aria-hidden="true" />
+                    </span>
+                    <span className="text-[0.9375rem] leading-relaxed text-white/85">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

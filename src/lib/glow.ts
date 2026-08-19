@@ -1,12 +1,12 @@
 import type { CSSProperties } from "react";
 
 type GlowOptions = {
-  /** border-radius in px used by the glow ring — match the element's own rounding. */
+  /** border-radius em px do anel de brilho — precisa bater com o arredondamento do elemento. */
   radius?: number;
 };
 
-/** Spread onto a card/button to give it the cursor-following spotlight border. */
-export function glowProps({ radius = 16 }: GlowOptions = {}) {
+/** Aplique num card/botão pra ganhar a borda violeta que segue o cursor. */
+export function glowProps({ radius = 24 }: GlowOptions = {}) {
   return {
     "data-glow": "",
     style: { "--radius": radius } as CSSProperties,

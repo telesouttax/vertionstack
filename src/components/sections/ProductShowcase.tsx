@@ -4,26 +4,27 @@ import { SHOWCASE_IMAGES } from "@/lib/constants";
 
 export function ProductShowcase() {
   return (
-    <ContainerScroll
-      titleComponent={
-        <>
-          <span className="font-mono text-xs uppercase tracking-wide text-muted">
-            Na prática
-          </span>
-          <h2 className="mt-4 font-heading text-3xl font-bold text-ink sm:text-4xl">
-            Veja como fica{" "}
-            <span className="bg-brand-gradient bg-clip-text text-transparent">
-              na tela do seu negócio
-            </span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl font-body text-lg text-muted">
-            Dashboard, sistema ou site: cada entrega é pensada pro seu processo,
-            não um modelo genérico.
-          </p>
-        </>
-      }
-    >
-      <ScreenshotCarousel images={SHOWCASE_IMAGES} />
-    </ContainerScroll>
+    <section id="na-pratica" className="section overflow-hidden bg-white">
+      <ContainerScroll
+        titleComponent={
+          <>
+            <span className="eyebrow">Na prática</span>
+            <h2 className="h2 mt-5 text-balance">
+              Veja como fica na tela do <span className="accent">seu</span> negócio.
+            </h2>
+            <p className="lede mx-auto mt-5 max-w-xl text-pretty">
+              Dashboard, sistema ou site: cada entrega nasce do seu processo, não de um modelo
+              genérico com o seu logo colado em cima.
+            </p>
+          </>
+        }
+      >
+        <ScreenshotCarousel images={SHOWCASE_IMAGES} />
+      </ContainerScroll>
+
+      <p className="container-x mt-8 text-center font-mono text-[0.625rem] uppercase tracking-widest text-ink-faint">
+        Exemplos ilustrativos de entrega
+      </p>
+    </section>
   );
 }
