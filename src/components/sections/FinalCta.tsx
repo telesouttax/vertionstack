@@ -1,7 +1,7 @@
+import { Instagram, Mail } from "lucide-react";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { Reveal } from "@/components/ui/Reveal";
-import { WHATSAPP_CONTACTS } from "@/lib/constants";
+import { CONTACT_EMAIL, INSTAGRAM_URL } from "@/lib/constants";
 
 export function FinalCta() {
   return (
@@ -36,22 +36,24 @@ export function FinalCta() {
             </div>
 
             <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-8 sm:flex-row sm:justify-center sm:gap-8">
-              <p className="font-mono text-label uppercase text-white/55">
-                Ou fale direto com um de nós
-              </p>
+              <p className="font-mono text-label uppercase text-white/55">Prefere outro canal?</p>
               <div className="flex flex-wrap items-center justify-center gap-3">
-                {WHATSAPP_CONTACTS.map((contact) => (
-                  <a
-                    key={contact.url}
-                    href={contact.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-xl border border-white/15 px-4 py-2.5 text-sm font-medium text-white outline-none transition-colors duration-300 hover:border-violet-400 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-violet-400"
-                  >
-                    <WhatsAppIcon className="h-4 w-4 text-violet-300" />
-                    {contact.name}
-                  </a>
-                ))}
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-xl border border-white/15 px-4 py-2.5 text-sm font-medium text-white outline-none transition-colors duration-300 hover:border-violet-400 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-violet-400"
+                >
+                  <Mail className="h-4 w-4 text-violet-300" aria-hidden="true" />
+                  E-mail
+                </a>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-xl border border-white/15 px-4 py-2.5 text-sm font-medium text-white outline-none transition-colors duration-300 hover:border-violet-400 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-violet-400"
+                >
+                  <Instagram className="h-4 w-4 text-violet-300" aria-hidden="true" />
+                  Instagram
+                </a>
               </div>
             </div>
           </div>

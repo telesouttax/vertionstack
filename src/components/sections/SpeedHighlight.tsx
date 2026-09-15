@@ -25,7 +25,8 @@ export function SpeedHighlight() {
 
             <p className="mt-5 max-w-lg text-pretty text-lg leading-relaxed text-white/60">
               Usamos IA em cada etapa, do diagnóstico ao código. Isso corta o tempo morto entre a
-              ideia e o projeto no ar. O que não muda é quem revisa: nós dois, linha por linha.
+              ideia e o projeto no ar. O que não muda é a revisão: nada vai pro ar sem ser lido
+              linha por linha.
             </p>
           </Reveal>
 

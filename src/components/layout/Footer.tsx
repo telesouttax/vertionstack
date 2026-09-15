@@ -70,7 +70,8 @@ export function Footer() {
                     className={linkClass}
                   >
                     <WhatsAppIcon className="h-4 w-4 text-brand" />
-                    WhatsApp {contact.name}
+                    {/* O nome só aparece quando há mais de um contato na lista. */}
+                    {WHATSAPP_CONTACTS.length > 1 ? `WhatsApp ${contact.name}` : "WhatsApp"}
                   </a>
                 </li>
               ))}

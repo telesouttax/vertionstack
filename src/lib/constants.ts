@@ -2,7 +2,6 @@ export const SITE_URL = "https://vertionstack.com";
 
 export const WHATSAPP_CONTACTS = [
   { name: "Lucas", url: "https://wa.me/5521960194636" },
-  { name: "Enzo", url: "https://wa.me/5521979759128" },
 ] as const;
 
 // Usado no botão principal de call-to-action do site.
@@ -29,7 +28,7 @@ export const HERO_PROOF = [
 export const STATS = [
   { value: "3–7", unit: "dias úteis", label: "Site ou landing page no ar" },
   { value: "24h", unit: "por dia", label: "Atendimento automático rodando" },
-  { value: "2", unit: "fundadores", label: "Falando direto com você" },
+  { value: "48h", unit: "no máximo", label: "Para a proposta chegar por escrito" },
   { value: "0", unit: "fidelidade", label: "Contrato por projeto, sem amarra" },
 ] as const;
 
@@ -141,7 +140,7 @@ export const TRUST_POINTS = [
   {
     title: "Você fala com quem constrói",
     description:
-      "Somos dois fundadores no seu projeto. Nada de atendente terceirizado repassando recado.",
+      "Quem atende é quem coloca a mão no código. Nada de atendente terceirizado repassando recado.",
     icon: "UserCheck",
   },
   {
