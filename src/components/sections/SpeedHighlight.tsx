@@ -1,6 +1,5 @@
-import { Sparkles } from "lucide-react";
-import { STATS } from "@/lib/constants";
 import { Reveal } from "@/components/ui/Reveal";
+import { ThinkingOrb } from "@/components/ui/ThinkingOrb";
 
 export function SpeedHighlight() {
   return (
@@ -14,10 +13,20 @@ export function SpeedHighlight() {
       <div className="container-x relative">
         <div className="grid items-end gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 font-mono text-label uppercase text-white/70 backdrop-blur">
-              <Sparkles className="h-3 w-3 text-violet-300" aria-hidden="true" />
-              Desenvolvimento assistido por IA
-            </span>
+            <div className="flex items-center gap-4">
+              {/* O orbe faz o trabalho que o ícone de "brilhinho" fazia: sinaliza IA,
+                  só que em movimento, bem em cima da afirmação. */}
+              <ThinkingOrb
+                state="working"
+                size={52}
+                theme="dark"
+                label="Ilustração animada de processamento por IA"
+                className="shrink-0"
+              />
+              <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 font-mono text-label uppercase text-white/70 backdrop-blur">
+                Desenvolvimento assistido por IA
+              </span>
+            </div>
 
             <h2 className="h2 mt-6 text-balance text-white">
               Por que a gente entrega <span className="accent text-violet-300">rápido</span>.
@@ -44,26 +53,6 @@ export function SpeedHighlight() {
           </Reveal>
         </div>
 
-        {/* Números honestos sobre como trabalhamos */}
-        <dl className="mt-16 grid grid-cols-2 gap-px overflow-hidden rounded-panel border border-white/10 bg-white/10 sm:mt-20 lg:grid-cols-4">
-          {STATS.map((stat, i) => (
-            <Reveal
-              key={stat.label}
-              delay={i * 0.07}
-              className="bg-surface-invert p-6 sm:p-8"
-            >
-              <dd className="flex items-baseline gap-1.5">
-                <span className="nums font-display text-4xl font-bold tracking-[-0.03em] text-white sm:text-5xl">
-                  {stat.value}
-                </span>
-                <span className="font-mono text-[0.625rem] uppercase tracking-wider text-violet-300">
-                  {stat.unit}
-                </span>
-              </dd>
-              <dt className="mt-3 text-sm leading-snug text-white/60">{stat.label}</dt>
-            </Reveal>
-          ))}
-        </dl>
       </div>
     </section>
   );

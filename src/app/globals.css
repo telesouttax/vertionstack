@@ -197,3 +197,8 @@ body {
     }
   }
 }
+
+/* Thinking Orbs: evita o vao de baseline quando o canvas fica inline. */
+[data-thinking-orb] {
+  display: block;
+}

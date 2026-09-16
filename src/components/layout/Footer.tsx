@@ -1,6 +1,7 @@
 import { Instagram, Mail } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
+import { SocialIconButtons } from "@/components/ui/SocialIconButtons";
 import {
   CONTACT_EMAIL,
   INSTAGRAM_URL,
@@ -96,13 +97,17 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 sm:flex-row">
-          <p className="text-xs text-ink-faint">
-            &copy; {year} Vertion Stack. Todos os direitos reservados.
-          </p>
-          <p className="font-mono text-[0.625rem] uppercase tracking-widest text-ink-faint">
-            Feito no Rio de Janeiro
-          </p>
+        <div className="mt-14 flex flex-col items-center gap-6 border-t border-line pt-8 sm:flex-row sm:justify-between">
+          <SocialIconButtons />
+
+          <div className="flex flex-col items-center gap-1.5 sm:items-end">
+            <p className="text-xs text-ink-faint">
+              &copy; {year} Vertion Stack. Todos os direitos reservados.
+            </p>
+            <p className="font-mono text-[0.625rem] uppercase tracking-widest text-ink-faint">
+              Feito no Rio de Janeiro
+            </p>
+          </div>
         </div>
       </div>
     </footer>

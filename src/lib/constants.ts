@@ -25,13 +25,6 @@ export const HERO_PROOF = [
   "Sem fidelidade",
 ] as const;
 
-export const STATS = [
-  { value: "3–7", unit: "dias úteis", label: "Site ou landing page no ar" },
-  { value: "24h", unit: "por dia", label: "Atendimento automático rodando" },
-  { value: "48h", unit: "no máximo", label: "Para a proposta chegar por escrito" },
-  { value: "0", unit: "fidelidade", label: "Contrato por projeto, sem amarra" },
-] as const;
-
 export const BUSINESS_SEGMENTS = [
   { label: "Barbearias", icon: "Scissors" },
   { label: "Clínicas", icon: "Stethoscope" },

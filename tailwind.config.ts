@@ -106,6 +106,10 @@ const config: Config = {
           "70%": { transform: "scale(1.4)", opacity: "0" },
           "100%": { transform: "scale(1.4)", opacity: "0" },
         },
+        "social-neighbor": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
         "grow-y": {
           "0%": { transform: "scaleY(0.05)", opacity: "0" },
           "100%": { transform: "scaleY(1)", opacity: "1" },
@@ -120,6 +124,7 @@ const config: Config = {
         "fade-up": "fade-up 0.6s cubic-bezier(0.16,1,0.3,1) both",
         float: "float 6s ease-in-out infinite",
         "pulse-ring": "pulse-ring 2.4s cubic-bezier(0.4,0,0.6,1) infinite",
+        "social-neighbor": "social-neighbor 0.16s ease-out",
         "grow-y": "grow-y 0.9s cubic-bezier(0.16,1,0.3,1) both",
         "sweep-x": "sweep-x 2.8s ease-in-out infinite",
       },

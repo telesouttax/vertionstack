@@ -2,7 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 import { Hero } from "@/components/sections/Hero";
-import { BusinessMarquee } from "@/components/sections/BusinessMarquee";
+import { BusinessOrbit } from "@/components/sections/BusinessOrbit";
 import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { ProductShowcase } from "@/components/sections/ProductShowcase";
@@ -18,7 +18,7 @@ export default function Home() {
       <Navbar />
       <main id="conteudo">
         <Hero />
-        <BusinessMarquee />
+        <BusinessOrbit />
         <BeforeAfter />
         <ServicesGrid />
         <ProductShowcase />
