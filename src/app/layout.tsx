@@ -7,6 +7,9 @@ import "./globals.css";
 /* Display com personalidade (grotesk de contraste alto) para títulos. */
 const display = Bricolage_Grotesque({
   subsets: ["latin"],
+  // Pesos fixos em vez do arquivo variavel inteiro: o navegador baixa so o
+  // que o site usa, e sao os unicos pesos aplicados em titulo.
+  weight: ["600", "700"],
   variable: "--font-display",
   display: "swap",
 });
@@ -14,6 +17,7 @@ const display = Bricolage_Grotesque({
 /* Corpo geométrico e legível — segura texto longo em português sem cansar. */
 const body = Manrope({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -30,6 +34,7 @@ const serif = Instrument_Serif({
 /* Mono para etiquetas, números e códigos de seção. */
 const mono = JetBrains_Mono({
   subsets: ["latin"],
+  weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
 });

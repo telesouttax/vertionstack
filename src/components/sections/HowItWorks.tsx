@@ -6,7 +6,7 @@ export function HowItWorks() {
   return (
     <section id="como-funciona" className="section relative overflow-hidden bg-white">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-1/3 h-[26rem] w-[46rem] -translate-x-1/2 rounded-full bg-violet-100/60 blur-[130px]" />
+        <div style={{ "--aurora-cor": "rgba(239,228,253,0.75)" } as React.CSSProperties} className="absolute left-1/2 top-1/4 h-[32rem] w-[52rem] -translate-x-1/2 aurora" />
       </div>
 
       <div className="container-x">

@@ -6,8 +6,8 @@ export function SpeedHighlight() {
     <section className="relative overflow-hidden bg-surface-invert py-24 sm:py-32">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-grid-invert opacity-60" />
-        <div className="absolute -right-20 top-0 h-[32rem] w-[32rem] rounded-full bg-brand-vivid/25 blur-[140px]" />
-        <div className="absolute -left-32 bottom-0 h-[26rem] w-[26rem] rounded-full bg-violet-700/30 blur-[130px]" />
+        <div style={{ "--aurora-cor": "rgba(149,0,255,0.3)" } as React.CSSProperties} className="absolute -right-28 -top-16 h-[38rem] w-[38rem] aurora" />
+        <div style={{ "--aurora-cor": "rgba(100,16,188,0.42)" } as React.CSSProperties} className="absolute -left-40 -bottom-16 h-[32rem] w-[32rem] aurora" />
       </div>
 
       <div className="container-x relative">

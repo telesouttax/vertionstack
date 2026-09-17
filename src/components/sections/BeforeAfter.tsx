@@ -55,7 +55,8 @@ export function BeforeAfter() {
           >
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-brand-vivid/30 blur-[80px]"
+              style={{ "--aurora-cor": "rgba(149,0,255,0.32)" } as React.CSSProperties}
+              className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 aurora"
             />
             <div className="relative">
               <p className="font-mono text-label uppercase text-violet-300">

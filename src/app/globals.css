@@ -202,3 +202,110 @@ body {
 [data-thinking-orb] {
   display: block;
 }
+
+/* ============================================================
+   AURORAS
+   Antes eram círculos sólidos com blur de até 140px. Bonito, mas
+   cada um obrigava a GPU a borrar uma área enorme a cada quadro —
+   no celular antigo isso trava a rolagem. Um radial-gradient
+   entrega o mesmo visual e é desenhado uma vez só.
+   ============================================================ */
+
+@layer utilities {
+  .aurora {
+    background-image: radial-gradient(
+      closest-side,
+      var(--aurora-cor, rgba(122, 22, 224, 0.3)),
+      transparent 100%
+    );
+  }
+}
+
+/* ============================================================
+   ANIMAÇÕES SEM BIBLIOTECA
+   Antes isso vinha da framer-motion, que custava 200 KB e ainda
+   fazia conta em JavaScript a cada quadro. Aqui é CSS: o navegador
+   resolve sozinho, fora da thread principal.
+   ============================================================ */
+
+@layer utilities {
+  /* Estado inicial de quem vai aparecer ao entrar na tela. */
+  .revelar {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: var(--atraso, 0s);
+  }
+
+  .revelar--visivel {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Entrada do topo da página: não espera rolagem, roda junto com a carga. */
+  .entrar {
+    opacity: 0;
+    animation: entrar 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--atraso, 0s);
+  }
+
+  @keyframes entrar {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* Flutuação dos itens em órbita. */
+  .flutuar {
+    animation: flutuar var(--duracao, 4s) ease-in-out infinite;
+    animation-delay: var(--atraso, 0s);
+  }
+
+  @keyframes flutuar {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  /* Traço dos arcos sendo desenhado. */
+  .tracar {
+    stroke-dasharray: var(--comprimento, 2000);
+    stroke-dashoffset: var(--comprimento, 2000);
+    animation: tracar 1.4s ease-out forwards;
+    animation-delay: var(--atraso, 0s);
+  }
+
+  @keyframes tracar {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .revelar,
+  .revelar--visivel {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .entrar,
+  .flutuar,
+  .tracar {
+    animation: none;
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}

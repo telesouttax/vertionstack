@@ -21,7 +21,8 @@ export function HeroVisual() {
       {/* Halo violeta atrás do painel */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -inset-10 -z-10 rounded-full bg-brand-vivid/20 blur-[90px]"
+        style={{ "--aurora-cor": "rgba(149,0,255,0.26)" } as React.CSSProperties}
+        className="pointer-events-none absolute -inset-20 -z-10 aurora"
       />
 
       {/* Janela do navegador */}

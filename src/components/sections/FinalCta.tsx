@@ -10,7 +10,7 @@ export function FinalCta() {
         <Reveal className="relative overflow-hidden rounded-panel bg-surface-invert px-7 py-16 text-center sm:px-12 sm:py-20 lg:py-24">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-grid-invert opacity-50" />
-            <div className="absolute left-1/2 top-0 h-[26rem] w-[40rem] -translate-x-1/2 -translate-y-1/3 rounded-full bg-brand-vivid/30 blur-[130px]" />
+            <div style={{ "--aurora-cor": "rgba(149,0,255,0.34)" } as React.CSSProperties} className="absolute left-1/2 top-0 h-[30rem] w-[44rem] -translate-x-1/2 -translate-y-1/3 aurora" />
           </div>
 
           <div className="relative mx-auto max-w-2xl">

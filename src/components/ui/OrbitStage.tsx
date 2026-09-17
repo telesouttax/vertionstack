@@ -1,6 +1,11 @@
 "use client";
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
-import { animate, motion, useInView, useReducedMotion } from "framer-motion";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +16,8 @@ import { cn } from "@/lib/utils";
  * Adaptado de "Builders Community Hero" (CommunityOrbit) para a Vertion:
  * - sem avatares de pessoas e sem emoji como ícone (só SVG do lucide)
  * - verde trocado pelo roxo da marca
- * - animação infinita desligada quando o sistema pede menos movimento
+ * - animação em CSS, sem biblioteca, e desligada quando o sistema pede
+ *   menos movimento
  */
 
 export type OrbitRing = "outer" | "inner";
@@ -55,6 +61,13 @@ function arcPath(r: number) {
   const dy = CENTER.y - STAGE_H;
   const dx = Math.sqrt(r * r - dy * dy);
   return `M ${CENTER.x - dx} ${STAGE_H} A ${r} ${r} 0 0 1 ${CENTER.x + dx} ${STAGE_H}`;
+}
+
+/** Comprimento do arco, pra animar o traço sendo desenhado no CSS. */
+function arcLength(r: number) {
+  const dy = CENTER.y - STAGE_H;
+  const dx = Math.sqrt(r * r - dy * dy);
+  return r * 2 * Math.asin(Math.min(1, dx / r));
 }
 
 /* ── peças que orbitam ──────────────────────────────────────────────── */
@@ -138,45 +151,69 @@ function splitValue(value: string) {
 
 function CountUp({ value, delay }: { value: string; delay: number }) {
   const parts = splitValue(value);
-  const prefersReducedMotion = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
-  // Só conta quando o número aparece na tela: quem rola até aqui vê o efeito,
-  // e quem nunca chega não corre o risco de encontrar um zero parado.
-  const inView = useInView(ref, { once: true, margin: "-15%" });
-  const [current, setCurrent] = useState(0);
-  // Enquanto a contagem não começou, mostramos o valor final. Assim o número
-  // certo já vai no HTML (Google e leitores sem JS) em vez de um zero parado.
-  const [started, setStarted] = useState(false);
+  const [atual, setAtual] = useState(0);
+  const [comecou, setComecou] = useState(false);
 
   useEffect(() => {
-    if (!parts || prefersReducedMotion || !inView) return;
+    const elemento = ref.current;
+    if (!parts || !elemento || comecou) return;
 
-    setStarted(true);
-    const controls = animate(0, parts.target, {
-      delay,
-      duration: 1.6,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => setCurrent(v),
-      onComplete: () => setCurrent(parts.target),
-    });
-    return () => controls.stop();
+    const menosMovimento =
+      typeof matchMedia !== "undefined" &&
+      matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (menosMovimento || typeof IntersectionObserver === "undefined") return;
+
+    // Só conta quando o número aparece na tela: quem rola até aqui vê o efeito.
+    const observador = new IntersectionObserver(
+      ([entrada]) => {
+        if (!entrada.isIntersecting) return;
+        observador.disconnect();
+        setComecou(true);
+
+        const duracao = 1600;
+        const inicio = performance.now() + delay * 1000;
+        let quadro = 0;
+
+        const passo = (agora: number) => {
+          const decorrido = agora - inicio;
+          if (decorrido < 0) {
+            quadro = requestAnimationFrame(passo);
+            return;
+          }
+          const p = Math.min(1, decorrido / duracao);
+          const suave = 1 - Math.pow(1 - p, 3);
+          setAtual(parts.target * suave);
+          if (p < 1) quadro = requestAnimationFrame(passo);
+        };
+
+        quadro = requestAnimationFrame(passo);
+        elemento.dataset.quadro = String(quadro);
+      },
+      { rootMargin: "-15%" }
+    );
+
+    observador.observe(elemento);
+    return () => {
+      observador.disconnect();
+      const quadro = Number(elemento.dataset.quadro);
+      if (quadro) cancelAnimationFrame(quadro);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, delay, prefersReducedMotion, inView]);
+  }, [value, delay, comecou]);
 
   if (!parts) return <span ref={ref}>{value}</span>;
+
+  // Antes de começar mostramos o valor final: assim o número certo já vai no
+  // HTML, em vez de um zero parado para quem lê sem JavaScript.
   return (
     <span ref={ref}>
       {parts.prefix}
-      {(started ? current : parts.target).toFixed(parts.decimals)}
+      {(comecou ? atual : parts.target).toFixed(parts.decimals)}
       {parts.suffix}
     </span>
   );
 }
-
-const reveal = {
-  hidden: { opacity: 0, y: 14, filter: "blur(4px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)" },
-};
 
 /* ── palco ──────────────────────────────────────────────────────────── */
 
@@ -190,18 +227,17 @@ export function OrbitStage({
 }: OrbitStageProps) {
   const frameRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
-  const prefersReducedMotion = useReducedMotion();
 
   // O palco é desenhado em 1200px e encolhe proporcionalmente para caber.
   useEffect(() => {
     const frame = frameRef.current;
     if (!frame) return;
-    const measure = () =>
+    const medir = () =>
       setScale(Math.min(1, Math.max(minScale, frame.clientWidth / STAGE_W)));
-    measure();
-    const observer = new ResizeObserver(measure);
-    observer.observe(frame);
-    return () => observer.disconnect();
+    medir();
+    const observador = new ResizeObserver(medir);
+    observador.observe(frame);
+    return () => observador.disconnect();
   }, [minScale]);
 
   return (
@@ -233,61 +269,60 @@ export function OrbitStage({
               WebkitMaskImage: "linear-gradient(to bottom, #000 62%, transparent 100%)",
             }}
           >
-            <motion.path
+            <path
               d={arcPath(RADIUS.outer)}
-              className="stroke-line"
+              className="tracar stroke-line"
               strokeWidth={2}
-              initial={prefersReducedMotion ? false : { pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.4, ease: "easeOut" }}
+              style={{ "--comprimento": arcLength(RADIUS.outer) } as CSSProperties}
             />
-            <motion.path
+            <path
               d={arcPath(RADIUS.inner)}
-              className="stroke-line-strong"
+              className="tracar stroke-line-strong"
               strokeWidth={3}
-              initial={prefersReducedMotion ? false : { pathLength: 0 }}
-              animate={{ pathLength: 1 }}
-              transition={{ duration: 1.4, ease: "easeOut", delay: 0.1 }}
+              style={
+                {
+                  "--comprimento": arcLength(RADIUS.inner),
+                  "--atraso": "0.1s",
+                } as CSSProperties
+              }
             />
           </svg>
 
           {/* Itens em órbita — ilustração, então escondidos do leitor de tela */}
           <div aria-hidden="true">
             {items.map((item, i) => (
-              <motion.div
+              <div
                 key={`${item.ring}-${item.angle}`}
-                className="absolute -translate-x-1/2 -translate-y-1/2"
-                style={positionOnRing(item.ring, item.angle)}
-                initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.7 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                className="entrar absolute -translate-x-1/2 -translate-y-1/2"
+                style={
+                  {
+                    ...positionOnRing(item.ring, item.angle),
+                    "--atraso": `${0.5 + i * 0.07}s`,
+                  } as CSSProperties
+                }
               >
-                <motion.div
-                  animate={prefersReducedMotion ? undefined : { y: [0, -4, 0] }}
-                  transition={{
-                    duration: 4 + (i % 4) * 0.6,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: (i * 0.4) % 2,
-                  }}
-                  whileHover={{ scale: 1.06 }}
+                <div
+                  className="flutuar transition-transform duration-200 hover:scale-105"
+                  style={
+                    {
+                      "--duracao": `${4 + (i % 4) * 0.6}s`,
+                      "--atraso": `${(i * 0.4) % 2}s`,
+                    } as CSSProperties
+                  }
                 >
                   {renderItem(item)}
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             ))}
           </div>
 
           {/* Números */}
           <dl className="absolute left-1/2 top-[393px] grid -translate-x-1/2 auto-cols-fr grid-flow-col gap-10">
             {stats.map((stat, i) => (
-              <motion.div
+              <div
                 key={stat.label}
-                className="flex flex-col items-center"
-                variants={reveal}
-                initial={prefersReducedMotion ? false : "hidden"}
-                animate="show"
-                transition={{ duration: 0.6, delay: 0.9 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="entrar flex flex-col items-center"
+                style={{ "--atraso": `${0.9 + i * 0.12}s` } as CSSProperties}
               >
                 <dd className="nums font-display text-[48px] font-bold leading-none tracking-[-0.03em] text-ink">
                   <CountUp value={stat.value} delay={0.9 + i * 0.12} />
@@ -295,41 +330,33 @@ export function OrbitStage({
                 <dt className="mt-4 text-center text-[13px] leading-tight text-ink-soft">
                   {stat.label}
                 </dt>
-              </motion.div>
+              </div>
             ))}
           </dl>
         </div>
       </div>
 
-      <motion.h2
-        className="h2 mx-auto mt-4 max-w-[640px] text-balance text-center"
-        variants={reveal}
-        initial={prefersReducedMotion ? false : "hidden"}
-        animate="show"
-        transition={{ duration: 0.7, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
+      <h2
+        className="entrar h2 mx-auto mt-4 max-w-[640px] text-balance text-center"
+        style={{ "--atraso": "1.3s" } as CSSProperties}
       >
         {headline}
-      </motion.h2>
+      </h2>
 
       {tags.length > 0 && (
         <div className="mx-auto mt-9 flex max-w-[780px] flex-wrap justify-center gap-3">
           {tags.map((tag, i) => (
-            <motion.a
+            <a
               key={tag.label}
               href={tag.href}
-              variants={reveal}
-              initial={prefersReducedMotion ? false : "hidden"}
-              animate="show"
-              transition={{ duration: 0.5, delay: 1.6 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -2 }}
-              whileTap={{ y: 0 }}
-              className="group flex h-11 cursor-pointer items-center gap-2.5 rounded-full border border-line bg-white pl-1.5 pr-4 text-sm font-medium text-ink shadow-card outline-none transition-colors duration-200 hover:border-violet-200 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+              style={{ "--atraso": `${1.6 + i * 0.08}s` } as CSSProperties}
+              className="entrar group flex h-11 cursor-pointer items-center gap-2.5 rounded-full border border-line bg-white pl-1.5 pr-4 text-sm font-medium text-ink shadow-card outline-none transition-all duration-200 hover:-translate-y-0.5 hover:border-violet-200 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-violet-50 text-brand transition-colors duration-200 group-hover:bg-brand group-hover:text-white [&>svg]:h-[15px] [&>svg]:w-[15px]">
                 {tag.icon}
               </span>
               {tag.label}
-            </motion.a>
+            </a>
           ))}
         </div>
       )}

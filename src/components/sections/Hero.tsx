@@ -5,35 +5,19 @@ import { HeroVisual } from "@/components/ui/HeroVisual";
 import { AnimatedGroup } from "@/components/ui/AnimatedGroup";
 import { HERO_PROOF } from "@/lib/constants";
 
-const heroEntrance = {
-  container: {
-    hidden: { opacity: 1 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
-  },
-  item: {
-    hidden: { opacity: 0, y: 18, filter: "blur(8px)" },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      transition: { duration: 0.85, ease: [0.16, 1, 0.3, 1] as const },
-    },
-  },
-};
-
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden bg-white pt-28 sm:pt-32 lg:pt-36">
       {/* Atmosfera: malha milimetrada + auroras violeta, tudo bem discreto */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-grid mask-fade-b opacity-70" />
-        <div className="absolute -right-24 -top-32 h-[34rem] w-[34rem] rounded-full bg-violet-300/35 blur-[130px]" />
-        <div className="absolute -left-40 top-40 h-[28rem] w-[28rem] rounded-full bg-violet-200/40 blur-[120px]" />
+        <div style={{ "--aurora-cor": "rgba(166,109,240,0.34)" } as React.CSSProperties} className="absolute -right-32 -top-40 h-[40rem] w-[40rem] aurora" />
+        <div style={{ "--aurora-cor": "rgba(197,161,246,0.38)" } as React.CSSProperties} className="absolute -left-48 top-32 h-[34rem] w-[34rem] aurora" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
       </div>
 
       <div className="container-x grid items-center gap-16 pb-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:gap-12 lg:pb-32">
-        <AnimatedGroup variants={heroEntrance} className="text-center lg:text-left">
+        <AnimatedGroup className="text-center lg:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white/70 px-3.5 py-1.5 font-mono text-label uppercase text-ink-soft backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-brand-vivid" aria-hidden="true" />
             Automação · Sistemas · Dashboards · Sites
