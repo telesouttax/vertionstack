@@ -7,7 +7,7 @@ const DAYS = ["S", "T", "Q", "Q", "S", "S", "D"];
 
 const KPIS = [
   { label: "Agendamentos", value: "24", trend: "+6" },
-  { label: "Respostas automáticas", value: "137", trend: "+41" },
+  { label: "Respostas prontas", value: "137", trend: "+41" },
   { label: "Tempo economizado", value: "9h", trend: "semana" },
 ];
 
@@ -122,7 +122,7 @@ export function HeroVisual() {
           </p>
           <p className="flex items-center justify-end gap-1 font-mono text-[0.5625rem] uppercase tracking-wider text-brand">
             <Check className="h-2.5 w-2.5" aria-hidden="true" />
-            respondido em 2s
+            resposta pronta · 1 clique
           </p>
         </div>
       </div>

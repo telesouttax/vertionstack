@@ -101,7 +101,7 @@ export function ServicesGrid() {
                           Abrimos! 9h às 15h. Quer marcar?
                         </span>
                         <span className="block pt-1 text-right font-mono text-[0.5625rem] uppercase tracking-wider text-brand">
-                          automático · 23:41
+                          resposta pronta · 1 clique
                         </span>
                       </div>
                     </div>

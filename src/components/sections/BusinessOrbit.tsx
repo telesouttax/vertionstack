@@ -22,7 +22,7 @@ import { BUSINESS_SEGMENTS } from "@/lib/constants";
 const items: OrbitItem[] = [
   // Arco de fora, da esquerda para a direita.
   { kind: "status", ring: "outer", angle: 132, label: "Site no ar" },
-  { kind: "card", ring: "outer", angle: 112.6, icon: <MessageSquareText />, badge: "24h" },
+  { kind: "card", ring: "outer", angle: 112.6, icon: <MessageSquareText />, badge: "8-23h" },
   { kind: "pill", ring: "outer", angle: 90, icon: <CalendarCheck2 />, label: "Agenda sem choque" },
   { kind: "pill", ring: "outer", angle: 67.6, icon: <BarChart3 />, label: "Painel atualizado" },
   { kind: "icon", ring: "outer", angle: 50.9, icon: <Store /> },
@@ -30,7 +30,7 @@ const items: OrbitItem[] = [
 
   // Arco de dentro.
   { kind: "icon", ring: "inner", angle: 137.2, icon: <Scissors /> },
-  { kind: "pill", ring: "inner", angle: 116.6, icon: <MessageSquareText />, label: "Resposta em 2s" },
+  { kind: "pill", ring: "inner", angle: 116.6, icon: <MessageSquareText />, label: "Resposta pronta" },
   { kind: "icon", ring: "inner", angle: 90, icon: <Stethoscope /> },
   { kind: "card", ring: "inner", angle: 63.3, icon: <Globe /> },
   { kind: "check", ring: "inner", angle: 41.8 },
@@ -44,7 +44,7 @@ const stats: OrbitStat[] = [
 ];
 
 const tags: OrbitTag[] = [
-  { icon: <MessageSquareText strokeWidth={2} />, label: "Automação", href: "#servicos" },
+  { icon: <MessageSquareText strokeWidth={2} />, label: "Atendimento", href: "#servicos" },
   { icon: <LayoutGrid strokeWidth={2} />, label: "Sistemas", href: "#servicos" },
   { icon: <BarChart3 strokeWidth={2} />, label: "Dashboards", href: "#servicos" },
   { icon: <Globe strokeWidth={2} />, label: "Sites", href: "#servicos" },

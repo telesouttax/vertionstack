@@ -41,7 +41,7 @@ const mono = JetBrains_Mono({
 
 const title = "Vertion Stack — tecnologia sob medida para o seu negócio";
 const description =
-  "Automação de atendimento no WhatsApp, sistemas sob medida, dashboards e sites para pequenos e médios negócios. Site ou landing page no ar em 3 a 7 dias úteis, com prazo e escopo por escrito.";
+  "Organização do atendimento no WhatsApp, sistemas sob medida, dashboards e sites para pequenos e médios negócios. Site ou landing page no ar em 3 a 7 dias úteis, com prazo e escopo por escrito.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -51,8 +51,8 @@ export const metadata: Metadata = {
   },
   description,
   keywords: [
-    "automação de atendimento",
-    "automação WhatsApp",
+    "organização de atendimento",
+    "whatsapp business para empresas",
     "sistema sob medida",
     "dashboard para pequenas empresas",
     "criação de sites",
@@ -62,13 +62,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Vertion Stack" }],
   creator: "Vertion Stack",
   alternates: { canonical: "/" },
-  icons: {
-    icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/logo.png", type: "image/png" },
-    ],
-    apple: "/logo.png",
-  },
   openGraph: {
     title,
     description,
@@ -116,7 +109,7 @@ const jsonLd = {
   },
   sameAs: [INSTAGRAM_URL, ...WHATSAPP_CONTACTS.map((c) => c.url)],
   knowsAbout: [
-    "Automação de atendimento",
+    "Organização do atendimento",
     "Sistemas sob medida",
     "Dashboards",
     "Sites e landing pages",

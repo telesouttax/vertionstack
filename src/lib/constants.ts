@@ -42,12 +42,12 @@ export const BUSINESS_SEGMENTS = [
 
 export const SERVICES = [
   {
-    id: "automacao",
+    id: "atendimento",
     kicker: "01",
-    title: "Automação de atendimento",
+    title: "Organização do atendimento",
     description:
-      "Seu WhatsApp responde, agenda e filtra cliente sozinho, inclusive de madrugada e no fim de semana.",
-    bullets: ["Resposta automática 24h", "Agendamento sem conflito", "Lembrete antes do horário"],
+      "Seu WhatsApp Business configurado do jeito certo, e a equipe com resposta pronta pra não deixar ninguém esperando.",
+    bullets: ["Resposta pronta em um clique", "Etiquetas que organizam o funil", "Perfil e catálogo completos"],
     icon: "MessageSquareText",
     featured: true,
   },
@@ -118,7 +118,7 @@ export const SHOWCASE_IMAGES = [
   {
     id: "dashboard",
     src: "/screenshots/dashboard.jpg",
-    alt: "Exemplo de dashboard de uma barbearia, com previsão de faltas e lembretes automáticos",
+    alt: "Exemplo de dashboard de uma barbearia, com agenda e números do mês",
     label: "Dashboard",
   },
   {
@@ -162,7 +162,7 @@ export const FAQS = [
   {
     pergunta: "Quanto tempo demora?",
     resposta:
-      "Sites e landing pages saem em 3 a 7 dias úteis. Dashboards e automações variam conforme a complexidade, e o prazo exato vai por escrito na proposta, depois que entendermos sua necessidade.",
+      "Sites e landing pages saem em 3 a 7 dias úteis. Dashboards e sistemas variam conforme a complexidade, e o prazo exato vai por escrito na proposta, depois que entendermos sua necessidade.",
   },
   {
     pergunta: "Preciso entender de tecnologia?",
@@ -182,7 +182,7 @@ export const FAQS = [
   {
     pergunta: "Funciona pro meu tipo de negócio?",
     resposta:
-      "De barbearia a escritório de advocacia. Se o seu negócio tem atendimento, agenda ou alguma tarefa repetitiva, quase sempre dá pra automatizar.",
+      "De barbearia a escritório de advocacia. Se o seu negócio tem atendimento, agenda ou controle pra organizar, quase sempre dá pra melhorar com tecnologia.",
   },
   {
     pergunta: "Vocês atendem fora do Rio de Janeiro?",
@@ -195,7 +195,7 @@ export const BEFORE_AFTER = {
   before: {
     label: "Como está hoje",
     items: [
-      "Você responde cada cliente na mão, um por um",
+      "Cada resposta digitada do zero, toda vez",
       "Agenda no caderno ou na cabeça, com choque de horário",
       "Cliente procura no Google e não te acha",
       "Decisão no achismo, porque o número está espalhado",
@@ -205,7 +205,7 @@ export const BEFORE_AFTER = {
   after: {
     label: "Como fica depois",
     items: [
-      "Atendimento respondendo sozinho 24 horas",
+      "Atendimento organizado, sem ninguém esperando",
       "Agendamento organizado, sem retrabalho",
       "Site que aparece e traz cliente novo",
       "Um painel com os números que importam",

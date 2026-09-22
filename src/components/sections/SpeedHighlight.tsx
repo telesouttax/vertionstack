@@ -47,7 +47,7 @@ export function SpeedHighlight() {
               úteis para sites e landing pages
             </p>
             <p className="mt-3 text-sm text-white/60 lg:ml-auto lg:max-w-sm">
-              Dashboards, sistemas e automações têm prazo próprio, sempre combinado por escrito
+              Dashboards e sistemas têm prazo próprio, sempre combinado por escrito
               antes de começar.
             </p>
           </Reveal>
