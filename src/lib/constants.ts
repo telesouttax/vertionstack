@@ -1,7 +1,7 @@
 export const SITE_URL = "https://vertionstack.com";
 
 export const WHATSAPP_CONTACTS = [
-  { name: "Lucas", url: "https://wa.me/5521960194636" },
+  { name: "Vertion Stack", url: "https://wa.me/5521984684009" },
 ] as const;
 
 // Usado no botão principal de call-to-action do site.

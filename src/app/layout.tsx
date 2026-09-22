@@ -106,7 +106,7 @@ const jsonLd = {
   email: CONTACT_EMAIL,
   image: `${SITE_URL}/og-image.png`,
   logo: `${SITE_URL}/logo.png`,
-  telephone: "+55 21 96019-4636",
+  telephone: "+55 21 98468-4009",
   areaServed: "BR",
   address: {
     "@type": "PostalAddress",
