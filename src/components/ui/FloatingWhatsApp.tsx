@@ -5,16 +5,29 @@ import { WhatsAppIcon } from "./WhatsAppIcon";
 
 /**
  * Botão flutuante de WhatsApp. Só aparece depois que o visitante rola a
- * primeira dobra — assim não compete com o CTA do topo.
+ * primeira dobra — assim não compete com o CTA do topo — e some quando o
+ * bloco de contato entra na tela, onde ele cobriria o "Enviar" do formulário.
  */
 export function FloatingWhatsApp() {
-  const [visible, setVisible] = useState(false);
+  const [rolou, setRolou] = useState(false);
+  const [noContato, setNoContato] = useState(false);
+  const visible = rolou && !noContato;
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 600);
+    const onScroll = () => setRolou(window.scrollY > 600);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    const contato = document.getElementById("contato");
+    const observador = contato
+      ? new IntersectionObserver(([entrada]) => setNoContato(entrada.isIntersecting))
+      : null;
+    if (contato && observador) observador.observe(contato);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observador?.disconnect();
+    };
   }, []);
 
   return (

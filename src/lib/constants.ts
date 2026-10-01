@@ -1,11 +1,11 @@
 export const SITE_URL = "https://vertionstack.com";
 
-export const WHATSAPP_CONTACTS = [
-  { name: "Vertion Stack", url: "https://wa.me/5521984684009" },
-] as const;
+// Só os dígitos, com DDI. O formulário monta o link com a mensagem já escrita.
+export const WHATSAPP_NUMBER = "5521984684009";
 
-// Usado no botão principal de call-to-action do site.
-export const WHATSAPP_URL = WHATSAPP_CONTACTS[0].url;
+export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+export const WHATSAPP_CONTACTS = [{ name: "Vertion Stack", url: WHATSAPP_URL }] as const;
 
 export const INSTAGRAM_URL = "https://instagram.com/vertionstack";
 
@@ -81,6 +81,16 @@ export const SERVICES = [
     icon: "Globe",
     featured: false,
   },
+] as const;
+
+// Opções do formulário de contato. Ficam em etiquetas curtas porque viram
+// texto dentro da mensagem do WhatsApp, não título de seção.
+export const LEAD_NEEDS = [
+  "Organização do atendimento",
+  "Sistema sob medida",
+  "Dashboard",
+  "Site ou landing page",
+  "Ainda não sei",
 ] as const;
 
 export const HOW_IT_WORKS = [
