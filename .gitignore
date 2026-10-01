@@ -7,3 +7,7 @@ npm-debug.log*
 .vercel
 
 tsconfig.tsbuildinfo
+
+# Pecas antigas do Instagram: 153 MB que o site nao usa. Ficam no PC do
+# Lucas, mas nao sobem pro repositorio publico.
+public/instagram/
