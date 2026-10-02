@@ -3,6 +3,67 @@
 @tailwind utilities;
 
 /* ============================================================
+   TEMAS
+   Os semânticos moram aqui, em canais RGB. O tailwind.config.ts
+   só aponta para eles. Trocar o tema é trocar estas linhas —
+   nenhum componente sabe que existe modo escuro.
+   ============================================================ */
+
+:root,
+:root[data-tema="claro"] {
+  color-scheme: light;
+
+  --cor-brand: 122 22 224;
+  --cor-brand-vivid: 149 0 255;
+  --cor-brand-soft: 239 228 253;
+  --cor-brand-deep: 76 12 144;
+
+  --cor-ink: 18 16 27;
+  --cor-ink-soft: 86 80 104;
+  --cor-ink-faint: 110 103 136;
+
+  --cor-surface: 255 255 255;
+  --cor-surface-raised: 248 247 251;
+  --cor-surface-sunken: 241 239 247;
+  --cor-surface-invert: 10 9 16;
+
+  --cor-line: 231 227 241;
+  --cor-line-strong: 213 207 229;
+
+  /* Usados fora do Tailwind: malha de fundo e spotlight do cursor. */
+  --cor-malha: 18 16 27;
+  --opacidade-malha: 0.045;
+}
+
+:root[data-tema="escuro"] {
+  color-scheme: dark;
+
+  /* #7A16E0 sobre preto quase não aparece — no escuro o roxo sobe para
+     violet-400, que é o mesmo roxo já usado nos painéis pretos do site. */
+  --cor-brand: 166 109 240;
+  --cor-brand-vivid: 185 140 255;
+  --cor-brand-soft: 36 26 53;
+  --cor-brand-deep: 197 161 246;
+
+  --cor-ink: 242 240 247;
+  --cor-ink-soft: 173 166 194;
+  --cor-ink-faint: 145 138 168;
+
+  --cor-surface: 13 11 20;
+  --cor-surface-raised: 22 19 31;
+  --cor-surface-sunken: 30 26 41;
+  /* No escuro o painel de destaque sobe em vez de descer: continua sendo
+     um bloco, e o texto branco que ele já usava segue valendo. */
+  --cor-surface-invert: 26 23 38;
+
+  --cor-line: 38 34 53;
+  --cor-line-strong: 53 48 74;
+
+  --cor-malha: 255 255 255;
+  --opacidade-malha: 0.05;
+}
+
+/* ============================================================
    BASE
    ============================================================ */
 
@@ -14,20 +75,23 @@ html {
 }
 
 body {
-  background-color: theme("colors.surface.DEFAULT");
-  color: theme("colors.ink.DEFAULT");
+  background-color: rgb(var(--cor-surface));
+  color: rgb(var(--cor-ink));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 ::selection {
-  background-color: theme("colors.brand.soft");
-  color: theme("colors.brand.deep");
+  background-color: rgb(var(--cor-brand-soft));
+  color: rgb(var(--cor-brand-deep));
 }
 
 :root {
-  --tw-ring-offset-color: #ffffff;
+  --tw-ring-offset-color: rgb(var(--cor-surface));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -91,11 +155,11 @@ body {
   }
 
   .card {
-    @apply rounded-3xl border border-line bg-white shadow-card transition-all duration-300;
+    @apply rounded-3xl border border-line bg-surface shadow-card transition-all duration-300;
   }
 
   .card-hover {
-    @apply hover:-translate-y-1 hover:border-violet-200 hover:shadow-lift;
+    @apply hover:-translate-y-1 hover:border-brand/40 hover:shadow-lift;
   }
 
   /* Régua fina de separação entre blocos. */
@@ -109,10 +173,19 @@ body {
    ============================================================ */
 
 @layer utilities {
-  /* Malha quadriculada bem sutil — dá "papel milimetrado" ao fundo branco. */
+  /* Malha quadriculada bem sutil — dá "papel milimetrado" ao fundo. No tema
+     escuro ela inverte: linha clara sobre fundo escuro. */
   .bg-grid {
-    background-image: linear-gradient(to right, rgba(18, 16, 27, 0.045) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(18, 16, 27, 0.045) 1px, transparent 1px);
+    background-image: linear-gradient(
+        to right,
+        rgb(var(--cor-malha) / var(--opacidade-malha)) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        rgb(var(--cor-malha) / var(--opacidade-malha)) 1px,
+        transparent 1px
+      );
     background-size: 72px 72px;
   }
 
@@ -171,7 +244,7 @@ body {
     background-attachment: fixed;
     background-image: radial-gradient(
       var(--spotlight-size) var(--spotlight-size) at calc(var(--x, 0) * 1px) calc(var(--y, 0) * 1px),
-      rgba(122, 22, 224, 0.55),
+      rgb(var(--cor-brand) / 0.55),
       transparent 100%
     );
     mask: linear-gradient(transparent, transparent), linear-gradient(white, white);

@@ -49,7 +49,7 @@ const BRAND = "#7A16E0";
 
 const toneStyles: Record<Tone, { button: string; icon: string; ring: string }> = {
   light: {
-    button: "bg-white shadow-card",
+    button: "bg-surface shadow-card",
     icon: "text-ink",
     ring: "stroke-[#D5CFE5]",
   },

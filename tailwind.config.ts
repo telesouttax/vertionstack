@@ -1,11 +1,22 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Tokens em três camadas: primitivo (violet-*, ink-*) → semântico (brand, ink,
- * surface, line) → componente (classes em globals.css). Nada de hex solto no JSX.
+ * Tokens em três camadas: primitivo (violet-*, carbon-*) → semântico (brand,
+ * ink, surface, line) → componente (classes em globals.css). Nada de hex solto
+ * no JSX.
+ *
+ * Os primitivos são hex fixo. Os semânticos são variáveis CSS, definidas em
+ * globals.css para o tema claro e redefinidas no escuro — é isso que faz o
+ * site inteiro virar com um atributo no <html>, sem repintar componente.
+ *
+ * Elas guardam os canais ("18 16 27") e não a cor pronta, senão `bg-ink/15` e
+ * `text-white/60` parariam de funcionar.
  */
+const comCanais = (variavel: string) => `rgb(var(${variavel}) / <alpha-value>)`;
+
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  darkMode: ["class", '[data-tema="escuro"]'],
   theme: {
     extend: {
       colors: {
@@ -36,27 +47,27 @@ const config: Config = {
           950: "#0A0910",
         },
 
-        // ── semânticos ────────────────────────────────────────────────
+        // ── semânticos (viram com o tema) ─────────────────────────────
         brand: {
-          DEFAULT: "#7A16E0", // ações, links, ícones — 6.9:1 no branco
-          vivid: "#9500FF", // igual ao logo: brilhos, gradientes, grafismos
-          soft: "#EFE4FD",
-          deep: "#4C0C90",
+          DEFAULT: comCanais("--cor-brand"), // ações, links, ícones
+          vivid: comCanais("--cor-brand-vivid"), // brilhos e grafismos
+          soft: comCanais("--cor-brand-soft"),
+          deep: comCanais("--cor-brand-deep"),
         },
         ink: {
-          DEFAULT: "#12101B", // texto principal
-          soft: "#565068", // texto de apoio
-          faint: "#6E6788", // legendas
+          DEFAULT: comCanais("--cor-ink"), // texto principal
+          soft: comCanais("--cor-ink-soft"), // texto de apoio
+          faint: comCanais("--cor-ink-faint"), // legendas
         },
         surface: {
-          DEFAULT: "#FFFFFF",
-          raised: "#F8F7FB",
-          sunken: "#F1EFF7",
-          invert: "#0A0910",
+          DEFAULT: comCanais("--cor-surface"),
+          raised: comCanais("--cor-surface-raised"),
+          sunken: comCanais("--cor-surface-sunken"),
+          invert: comCanais("--cor-surface-invert"), // painel de destaque
         },
         line: {
-          DEFAULT: "#E7E3F1",
-          strong: "#D5CFE5",
+          DEFAULT: comCanais("--cor-line"),
+          strong: comCanais("--cor-line-strong"),
           invert: "rgba(255,255,255,0.12)",
         },
       },

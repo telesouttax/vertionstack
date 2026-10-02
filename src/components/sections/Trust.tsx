@@ -13,7 +13,7 @@ const ICONS: Record<string, LucideIcon> = {
 
 export function Trust() {
   return (
-    <section id="confianca" className="section bg-white">
+    <section id="confianca" className="section bg-surface">
       <div className="container-x">
         <SectionHeading
           eyebrow="Por que confiar"
@@ -32,9 +32,9 @@ export function Trust() {
               <Reveal key={point.title} delay={i * 0.07} className="group h-full">
                 <article
                   {...glowProps({ radius: 24 })}
-                  className="flex h-full items-start gap-5 rounded-3xl border border-line bg-surface-raised p-7 transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:bg-white hover:shadow-lift sm:p-8"
+                  className="flex h-full items-start gap-5 rounded-3xl border border-line bg-surface-raised p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:bg-surface hover:shadow-lift sm:p-8"
                 >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-line bg-white text-brand transition-colors duration-300 group-hover:border-violet-200 group-hover:bg-brand group-hover:text-white">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-line bg-surface text-brand transition-colors duration-300 group-hover:border-brand/30 group-hover:bg-brand group-hover:text-white dark:group-hover:text-carbon-900">
                     <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <div>

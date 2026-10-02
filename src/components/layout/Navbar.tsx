@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +32,7 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled || menuOpen
-          ? "border-b border-line bg-white/95 sm:bg-white/85 sm:backdrop-blur-xl"
+          ? "border-b border-line bg-surface/95 sm:bg-surface/85 sm:backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       )}
     >
@@ -49,7 +50,7 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="relative cursor-pointer rounded-lg px-3.5 py-2 font-body text-sm font-medium text-ink-soft outline-none transition-colors duration-200 hover:bg-violet-50 hover:text-ink focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+                className="relative cursor-pointer rounded-lg px-3.5 py-2 font-body text-sm font-medium text-ink-soft outline-none transition-colors duration-200 hover:bg-brand-soft/55 hover:text-ink focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
               >
                 {link.label}
               </a>
@@ -58,6 +59,10 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
+          {/* No celular ele espremia o botão de menu — lá a troca de tema
+              mora dentro do próprio menu. */}
+          <ThemeToggle className="hidden sm:flex" />
+
           <WhatsAppButton
             shortLabel="WhatsApp"
             className="min-h-[44px] px-4 py-2.5 text-sm sm:px-5"
@@ -81,7 +86,7 @@ export function Navbar() {
       </nav>
 
       {menuOpen && (
-        <div id="menu-mobile" className="border-t border-line bg-white lg:hidden">
+        <div id="menu-mobile" className="border-t border-line bg-surface lg:hidden">
           <ul className="container-x flex flex-col py-2">
             {NAV_LINKS.map((link, i) => (
               <li key={link.href} className="border-b border-line/70 last:border-0">
@@ -98,6 +103,9 @@ export function Navbar() {
                 </a>
               </li>
             ))}
+            <li className="border-t border-line sm:hidden">
+              <ThemeToggle comRotulo />
+            </li>
           </ul>
         </div>
       )}

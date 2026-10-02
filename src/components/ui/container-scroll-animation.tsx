@@ -73,7 +73,7 @@ export function ContainerScroll({
       <div className="mt-12 sm:mt-16" style={{ perspective: "1200px" }}>
         <div
           ref={molduraRef}
-          className="relative mx-auto w-full max-w-5xl rounded-panel border border-line bg-white p-2 shadow-lift sm:p-3"
+          className="relative mx-auto w-full max-w-5xl rounded-panel border border-line bg-surface p-2 shadow-lift sm:p-3"
           style={
             {
               "--giro": "22deg",

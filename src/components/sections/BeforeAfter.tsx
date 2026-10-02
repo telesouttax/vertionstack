@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function BeforeAfter() {
   return (
-    <section id="o-problema" className="section relative overflow-hidden bg-white">
+    <section id="o-problema" className="section relative overflow-hidden bg-surface">
       <div className="container-x">
         <SectionHeading
           eyebrow="O problema"
@@ -42,7 +42,7 @@ export function BeforeAfter() {
           >
             <span
               aria-hidden="true"
-              className="flex h-11 w-11 items-center justify-center rounded-full bg-brand text-white shadow-brand"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-brand text-white dark:text-carbon-900 shadow-brand"
             >
               <ArrowRight className="h-5 w-5 rotate-90 lg:rotate-0" />
             </span>
@@ -51,7 +51,9 @@ export function BeforeAfter() {
           {/* Depois — painel preto, onde o violeta aparece com mais força */}
           <Reveal
             delay={0.15}
-            className="relative overflow-hidden rounded-3xl bg-ink p-7 shadow-lift sm:p-9"
+            // surface-invert e não bg-ink: este painel precisa seguir escuro
+            // nos dois temas, e `ink` clareia quando o tema vira.
+            className="relative overflow-hidden rounded-3xl bg-surface-invert p-7 shadow-lift sm:p-9"
           >
             <div
               aria-hidden="true"
@@ -66,7 +68,7 @@ export function BeforeAfter() {
                 {BEFORE_AFTER.after.items.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand">
-                      <Check className="h-3 w-3 text-white" aria-hidden="true" />
+                      <Check className="h-3 w-3 text-white dark:text-carbon-900" aria-hidden="true" />
                     </span>
                     <span className="text-[0.9375rem] leading-relaxed text-white/85">{item}</span>
                   </li>

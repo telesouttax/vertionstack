@@ -14,7 +14,7 @@ const canal =
 
 export function FinalCta() {
   return (
-    <section id="contato" className="bg-white pb-24 pt-8 sm:pb-32">
+    <section id="contato" className="bg-surface pb-24 pt-8 sm:pb-32">
       <div className="container-x">
         <Reveal className="relative overflow-hidden rounded-panel bg-surface-invert px-6 py-14 sm:px-10 sm:py-16 lg:px-14 lg:py-20">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0">

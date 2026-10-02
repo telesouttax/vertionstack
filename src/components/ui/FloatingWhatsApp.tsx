@@ -39,7 +39,7 @@ export function FloatingWhatsApp() {
       title="Falar no WhatsApp"
       tabIndex={visible ? 0 : -1}
       aria-hidden={!visible}
-      className={`group fixed bottom-5 right-5 z-50 flex h-14 w-14 cursor-pointer items-center justify-center rounded-2xl bg-brand text-white shadow-brand-lg transition-all duration-300 hover:scale-105 hover:bg-violet-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:bottom-8 sm:right-8 ${
+      className={`group fixed bottom-5 right-5 z-50 flex h-14 w-14 cursor-pointer items-center justify-center rounded-2xl bg-brand text-white dark:text-carbon-900 shadow-brand-lg transition-all duration-300 hover:scale-105 hover:bg-violet-700 dark:hover:bg-violet-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 sm:bottom-8 sm:right-8 ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >

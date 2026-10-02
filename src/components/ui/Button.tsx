@@ -20,13 +20,14 @@ const sizes: Record<ButtonSize, string> = {
 const variants: Record<ButtonVariant, string> = {
   // Ação principal: violeta sólido com um leve degradê e sombra colorida.
   primary:
-    "bg-brand text-white shadow-brand hover:bg-violet-700 hover:shadow-brand-lg hover:-translate-y-0.5 active:translate-y-0",
+    "bg-brand text-white dark:text-carbon-900 shadow-brand hover:bg-violet-700 dark:hover:bg-violet-300 hover:shadow-brand-lg hover:-translate-y-0.5 active:translate-y-0",
   // Ação secundária no branco: contorno fino que ganha violeta no hover.
   secondary:
-    "border border-line-strong bg-white text-ink hover:border-brand hover:text-brand hover:-translate-y-0.5 active:translate-y-0",
-  // Sobre fundo preto.
+    "border border-line-strong bg-surface text-ink hover:border-brand hover:text-brand hover:-translate-y-0.5 active:translate-y-0",
+  // Sobre o painel escuro. Branco literal e tinta primitiva de propósito: se
+  // virassem token, no tema escuro o botão sumiria dentro do próprio painel.
   invert:
-    "bg-white text-ink hover:bg-violet-100 hover:-translate-y-0.5 active:translate-y-0",
+    "bg-white text-carbon-900 hover:bg-violet-100 hover:-translate-y-0.5 active:translate-y-0",
   ghost: "text-ink hover:text-brand",
 };
 

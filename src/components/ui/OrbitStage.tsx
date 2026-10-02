@@ -73,7 +73,7 @@ function arcLength(r: number) {
 /* ── peças que orbitam ──────────────────────────────────────────────── */
 
 const chipBase =
-  "flex items-center whitespace-nowrap rounded-full border border-line bg-white shadow-card";
+  "flex items-center whitespace-nowrap rounded-full border border-line bg-surface shadow-card";
 
 function OrbitPill({ icon, label }: { icon: ReactNode; label: string }) {
   return (
@@ -88,10 +88,10 @@ function OrbitPill({ icon, label }: { icon: ReactNode; label: string }) {
 
 function OrbitCard({ icon, badge }: { icon: ReactNode; badge?: string }) {
   return (
-    <div className="relative flex h-[52px] w-[52px] items-center justify-center rounded-2xl border border-line bg-white text-brand shadow-card [&>svg]:h-[22px] [&>svg]:w-[22px]">
+    <div className="relative flex h-[52px] w-[52px] items-center justify-center rounded-2xl border border-line bg-surface text-brand shadow-card [&>svg]:h-[22px] [&>svg]:w-[22px]">
       {icon}
       {badge && (
-        <span className="absolute -bottom-1.5 -right-2 flex h-[18px] items-center rounded-md border border-line bg-white px-1.5 font-mono text-[9px] font-medium leading-none text-brand-deep shadow-card">
+        <span className="absolute -bottom-1.5 -right-2 flex h-[18px] items-center rounded-md border border-line bg-surface px-1.5 font-mono text-[9px] font-medium leading-none text-brand-deep shadow-card">
           {badge}
         </span>
       )}
@@ -101,7 +101,7 @@ function OrbitCard({ icon, badge }: { icon: ReactNode; badge?: string }) {
 
 function OrbitStatus({ label }: { label: string }) {
   return (
-    <div className="flex h-[30px] items-center gap-1.5 whitespace-nowrap rounded-full border border-violet-200 bg-violet-50 px-2.5 text-[13px] font-medium text-brand-deep shadow-card">
+    <div className="flex h-[30px] items-center gap-1.5 whitespace-nowrap rounded-full border border-brand/30 bg-brand-soft/55 px-2.5 text-[13px] font-medium text-brand-deep shadow-card">
       <Check size={14} strokeWidth={2.6} className="text-brand" aria-hidden="true" />
       {label}
     </div>
@@ -110,7 +110,7 @@ function OrbitStatus({ label }: { label: string }) {
 
 function OrbitIcon({ icon }: { icon: ReactNode }) {
   return (
-    <div className="flex h-[58px] w-[58px] items-center justify-center rounded-full border border-line bg-white text-brand shadow-card [&>svg]:h-[22px] [&>svg]:w-[22px]">
+    <div className="flex h-[58px] w-[58px] items-center justify-center rounded-full border border-line bg-surface text-brand shadow-card [&>svg]:h-[22px] [&>svg]:w-[22px]">
       {icon}
     </div>
   );
@@ -119,7 +119,7 @@ function OrbitIcon({ icon }: { icon: ReactNode }) {
 function OrbitCheck() {
   return (
     <div className="flex h-[50px] w-[50px] items-center justify-center rounded-full bg-brand shadow-brand">
-      <Check size={20} strokeWidth={2.6} className="text-white" aria-hidden="true" />
+      <Check size={20} strokeWidth={2.6} className="text-white dark:text-carbon-900" aria-hidden="true" />
     </div>
   );
 }
@@ -350,9 +350,9 @@ export function OrbitStage({
               key={tag.label}
               href={tag.href}
               style={{ "--atraso": `${1.6 + i * 0.08}s` } as CSSProperties}
-              className="entrar group flex h-11 cursor-pointer items-center gap-2.5 rounded-full border border-line bg-white pl-1.5 pr-4 text-sm font-medium text-ink shadow-card outline-none transition-all duration-200 hover:-translate-y-0.5 hover:border-violet-200 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+              className="entrar group flex h-11 cursor-pointer items-center gap-2.5 rounded-full border border-line bg-surface pl-1.5 pr-4 text-sm font-medium text-ink shadow-card outline-none transition-all duration-200 hover:-translate-y-0.5 hover:border-brand/30 focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-violet-50 text-brand transition-colors duration-200 group-hover:bg-brand group-hover:text-white [&>svg]:h-[15px] [&>svg]:w-[15px]">
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-soft/55 text-brand transition-colors duration-200 group-hover:bg-brand group-hover:text-white dark:group-hover:text-carbon-900 [&>svg]:h-[15px] [&>svg]:w-[15px]">
                 {tag.icon}
               </span>
               {tag.label}

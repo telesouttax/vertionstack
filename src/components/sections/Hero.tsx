@@ -7,7 +7,7 @@ import { HERO_PROOF } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden bg-white pt-28 sm:pt-32 lg:pt-36">
+    <section id="top" className="relative overflow-hidden bg-surface pt-28 sm:pt-32 lg:pt-36">
       {/* Atmosfera: malha milimetrada + auroras violeta, tudo bem discreto */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-grid mask-fade-b opacity-70" />
@@ -18,7 +18,7 @@ export function Hero() {
 
       <div className="container-x grid items-center gap-16 pb-24 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.92fr)] lg:gap-12 lg:pb-32">
         <AnimatedGroup className="text-center lg:text-left">
-          <span className="inline-flex items-center gap-2 rounded-full border border-line bg-white/70 px-3.5 py-1.5 font-mono text-label uppercase text-ink-soft backdrop-blur">
+          <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-1.5 font-mono text-label uppercase text-ink-soft backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-brand-vivid" aria-hidden="true" />
             Atendimento · Sistemas · Dashboards · Sites
           </span>
@@ -44,7 +44,7 @@ export function Hero() {
           <ul className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 lg:justify-start">
             {HERO_PROOF.map((item) => (
               <li key={item} className="flex items-center gap-2 text-sm font-medium text-ink-soft">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-violet-100">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand-soft">
                   <Check className="h-3 w-3 text-brand" aria-hidden="true" />
                 </span>
                 {item}

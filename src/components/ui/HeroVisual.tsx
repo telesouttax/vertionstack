@@ -26,14 +26,14 @@ export function HeroVisual() {
       />
 
       {/* Janela do navegador */}
-      <div className="overflow-hidden rounded-3xl border border-line bg-white shadow-lift">
+      <div className="overflow-hidden rounded-3xl border border-line bg-surface shadow-lift">
         <div className="flex items-center gap-3 border-b border-line bg-surface-raised px-4 py-3">
           <span aria-hidden="true" className="flex gap-1.5">
             <span className="h-2.5 w-2.5 rounded-full bg-carbon-300" />
             <span className="h-2.5 w-2.5 rounded-full bg-carbon-300" />
             <span className="h-2.5 w-2.5 rounded-full bg-carbon-300" />
           </span>
-          <span className="flex-1 truncate rounded-md bg-white px-3 py-1 text-center font-mono text-[0.625rem] text-ink-faint ring-1 ring-line">
+          <span className="flex-1 truncate rounded-md bg-surface px-3 py-1 text-center font-mono text-[0.625rem] text-ink-faint ring-1 ring-line">
             painel.seunegocio.com.br
           </span>
         </div>
@@ -46,7 +46,7 @@ export function HeroVisual() {
                 Visão geral
               </p>
             </div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-50 px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-widest text-brand ring-1 ring-violet-200">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft/55 px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-widest text-brand ring-1 ring-brand/30">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-vivid motion-safe:animate-pulse" />
               ao vivo
             </span>
@@ -89,19 +89,19 @@ export function HeroVisual() {
           </div>
 
           <div className="mt-4 flex items-center justify-between rounded-2xl bg-ink px-4 py-3">
-            <span className="flex items-center gap-2.5 text-sm font-medium text-white">
-              <CalendarCheck2 className="h-4 w-4 text-violet-300" aria-hidden="true" />
+            <span className="flex items-center gap-2.5 text-sm font-medium text-surface">
+              <CalendarCheck2 className="h-4 w-4 text-violet-300 dark:text-violet-700" aria-hidden="true" />
               Próximo horário confirmado
             </span>
-            <span className="nums font-mono text-xs text-white/60">14:30</span>
+            <span className="nums font-mono text-xs text-surface/60">14:30</span>
           </div>
         </div>
       </div>
 
       {/* Conversa do WhatsApp flutuando na frente do painel */}
-      <div className="absolute -bottom-8 -left-4 w-[17rem] rounded-3xl border border-line bg-white p-4 shadow-lift motion-safe:animate-float sm:-left-12">
+      <div className="absolute -bottom-8 -left-4 w-[17rem] rounded-3xl border border-line bg-surface p-4 shadow-lift motion-safe:animate-float sm:-left-12">
         <div className="flex items-center gap-2 border-b border-line pb-3">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-white">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-surface">
             <WhatsAppIcon className="h-4 w-4" />
           </span>
           <div className="min-w-0">
@@ -117,7 +117,7 @@ export function HeroVisual() {
           <p className="w-fit max-w-[85%] rounded-2xl rounded-tl-sm bg-surface-sunken px-3 py-2 text-xs leading-snug text-ink">
             Oi, dá pra marcar pra sexta?
           </p>
-          <p className="ml-auto w-fit max-w-[90%] rounded-2xl rounded-br-sm bg-brand px-3 py-2 text-xs leading-snug text-white">
+          <p className="ml-auto w-fit max-w-[90%] rounded-2xl rounded-br-sm bg-brand px-3 py-2 text-xs leading-snug text-white dark:text-carbon-900">
             Claro! Tenho 14h e 16h30. Qual fica melhor?
           </p>
           <p className="flex items-center justify-end gap-1 font-mono text-[0.5625rem] uppercase tracking-wider text-brand">
@@ -128,7 +128,7 @@ export function HeroVisual() {
       </div>
 
       {/* Selo canto superior direito */}
-      <div className="absolute -right-2 -top-5 hidden items-center gap-2 rounded-2xl border border-line bg-white px-3.5 py-2.5 shadow-card sm:flex">
+      <div className="absolute -right-2 -top-5 hidden items-center gap-2 rounded-2xl border border-line bg-surface px-3.5 py-2.5 shadow-card sm:flex">
         <ArrowUpRight className="h-4 w-4 text-brand" aria-hidden="true" />
         <span className="text-xs font-semibold text-ink">Sem plantão manual</span>
       </div>

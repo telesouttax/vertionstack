@@ -4,7 +4,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function HowItWorks() {
   return (
-    <section id="como-funciona" className="section relative overflow-hidden bg-white">
+    <section id="como-funciona" className="section relative overflow-hidden bg-surface">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <div style={{ "--aurora-cor": "rgba(239,228,253,0.75)" } as React.CSSProperties} className="absolute left-1/2 top-1/4 h-[32rem] w-[52rem] -translate-x-1/2 aurora" />
       </div>
@@ -24,7 +24,7 @@ export function HowItWorks() {
           {/* Trilho que liga os quatro passos no desktop */}
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute left-[1.375rem] top-2 hidden h-[calc(100%-1rem)] w-px bg-gradient-to-b from-brand via-violet-200 to-transparent sm:block lg:left-0 lg:top-[1.375rem] lg:h-px lg:w-full lg:bg-gradient-to-r"
+            className="pointer-events-none absolute left-[1.375rem] top-2 hidden h-[calc(100%-1rem)] w-px bg-gradient-to-b from-brand via-brand/40 to-transparent sm:block lg:left-0 lg:top-[1.375rem] lg:h-px lg:w-full lg:bg-gradient-to-r"
           />
 
           {HOW_IT_WORKS.map((step, i) => (
@@ -34,12 +34,12 @@ export function HowItWorks() {
               delay={i * 0.09}
               className="relative pl-16 sm:pl-20 lg:pl-0"
             >
-              <span className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white font-mono text-sm font-medium text-brand shadow-card lg:relative lg:mb-7">
+              <span className="absolute left-0 top-0 flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface font-mono text-sm font-medium text-brand shadow-card lg:relative lg:mb-7">
                 {step.number}
               </span>
 
               <div className="lg:pr-6">
-                <span className="inline-block rounded-full bg-violet-50 px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-brand-deep">
+                <span className="inline-block rounded-full bg-brand-soft/55 px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-wider text-brand-deep">
                   {step.duration}
                 </span>
                 <h3 className="mt-3 font-display text-xl font-bold tracking-[-0.02em] text-ink">

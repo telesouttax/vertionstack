@@ -49,7 +49,7 @@ export function ServicesGrid() {
                 <article
                   {...glowProps({ radius: 24 })}
                   className={cn(
-                    "flex h-full flex-col rounded-3xl border border-line bg-white p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-lift sm:p-8",
+                    "flex h-full flex-col rounded-3xl border border-line bg-surface p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lift sm:p-8",
                     featured && "lg:flex-row lg:items-center lg:gap-10"
                   )}
                 >
@@ -77,7 +77,7 @@ export function ServicesGrid() {
                       {service.bullets.map((bullet) => (
                         <li
                           key={bullet}
-                          className="inline-flex items-center gap-1.5 rounded-full bg-violet-50 px-3 py-1.5 text-xs font-medium text-brand-deep"
+                          className="inline-flex items-center gap-1.5 rounded-full bg-brand-soft/55 px-3 py-1.5 text-xs font-medium text-brand-deep"
                         >
                           <Check className="h-3 w-3 text-brand" aria-hidden="true" />
                           {bullet}
@@ -94,10 +94,10 @@ export function ServicesGrid() {
                     >
                       <div className="space-y-2">
                         <span className="block h-2 w-14 rounded-full bg-carbon-200" />
-                        <span className="block w-fit max-w-full rounded-2xl rounded-tl-sm bg-white px-3 py-2 text-[0.6875rem] leading-snug text-ink ring-1 ring-line">
+                        <span className="block w-fit max-w-full rounded-2xl rounded-tl-sm bg-surface px-3 py-2 text-[0.6875rem] leading-snug text-ink ring-1 ring-line">
                           Vocês abrem sábado?
                         </span>
-                        <span className="ml-auto block w-fit max-w-full rounded-2xl rounded-br-sm bg-brand px-3 py-2 text-[0.6875rem] leading-snug text-white">
+                        <span className="ml-auto block w-fit max-w-full rounded-2xl rounded-br-sm bg-brand px-3 py-2 text-[0.6875rem] leading-snug text-white dark:text-carbon-900">
                           Abrimos! 9h às 15h. Quer marcar?
                         </span>
                         <span className="block pt-1 text-right font-mono text-[0.5625rem] uppercase tracking-wider text-brand">

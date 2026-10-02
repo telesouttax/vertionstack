@@ -79,7 +79,7 @@ export function SitePreview({ url, nome }: SitePreviewProps) {
         type="button"
         onClick={() => setAberto(true)}
         aria-label={`Abrir o site da ${nome} em tela cheia`}
-        className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl border border-line bg-white text-left shadow-card outline-none transition-all duration-300 hover:-translate-y-1 hover:border-violet-200 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+        className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-card outline-none transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
       >
         {/* Barra de navegador: dá o contexto de "isto é um site", não uma foto. */}
         <div className="flex items-center gap-2 border-b border-line bg-surface-raised px-3.5 py-2.5">
@@ -88,7 +88,7 @@ export function SitePreview({ url, nome }: SitePreviewProps) {
             <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
             <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
           </span>
-          <span className="ml-1 truncate rounded-md bg-white px-2.5 py-1 font-mono text-[0.6875rem] text-ink-faint">
+          <span className="ml-1 truncate rounded-md bg-surface px-2.5 py-1 font-mono text-[0.6875rem] text-ink-faint">
             {dominio(url)}
           </span>
         </div>
@@ -120,8 +120,8 @@ export function SitePreview({ url, nome }: SitePreviewProps) {
           )}
 
           {/* Véu com o convite. Fica discreto até o mouse chegar. */}
-          <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-ink/0 p-4 transition-colors duration-300 group-hover:bg-ink/15">
-            <span className="flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-white opacity-0 shadow-lift transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 motion-safe:translate-y-2 motion-safe:group-hover:translate-y-0">
+          <div className="pointer-events-none absolute inset-0 flex items-end justify-center bg-carbon-950/0 p-4 transition-colors duration-300 group-hover:bg-carbon-950/25">
+            <span className="flex items-center gap-2 rounded-full bg-ink px-4 py-2.5 text-sm font-semibold text-surface opacity-0 shadow-lift transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 motion-safe:translate-y-2 motion-safe:group-hover:translate-y-0">
               <Expand className="h-4 w-4" aria-hidden="true" />
               Explorar o site
             </span>
@@ -241,6 +241,8 @@ function TelaCheia({ url, nome, aoFechar }: TelaCheiaProps) {
 
       <div
         className={cn(
+          // Branco literal: é o fundo que aparece enquanto o site carrega, e
+          // os sites embutidos são claros. Com token, piscaria escuro antes.
           "relative mx-auto w-full flex-1 overflow-hidden rounded-2xl border border-white/15 bg-white transition-[max-width] duration-300",
           celular ? "max-w-[420px]" : "max-w-none",
         )}

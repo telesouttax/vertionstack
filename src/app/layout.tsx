@@ -85,9 +85,29 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFFFFF",
-  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#0D0B14" },
+  ],
+  colorScheme: "light dark",
 };
+
+/**
+ * Roda antes da primeira pintura, direto no <head>. Se ficasse num componente
+ * React, a página apareceria branca e só depois escureceria — aquele flash que
+ * denuncia tema mal feito.
+ *
+ * O padrão é claro mesmo em quem usa o sistema no escuro: a marca é de fundo
+ * branco, e quem preferir escuro troca no botão. A escolha fica salva.
+ */
+const scriptDoTema = `
+try {
+  var t = localStorage.getItem("vertion-tema");
+  document.documentElement.setAttribute("data-tema", t === "escuro" ? "escuro" : "claro");
+} catch (e) {
+  document.documentElement.setAttribute("data-tema", "claro");
+}
+`.trim();
 
 /* Dados estruturados: ajuda o Google a entender que é uma empresa local de tecnologia. */
 const jsonLd = {
@@ -121,11 +141,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang="pt-BR"
       className={`${display.variable} ${body.variable} ${serif.variable} ${mono.variable}`}
+      suppressHydrationWarning
     >
-      <body className="bg-white font-body text-ink antialiased">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: scriptDoTema }} />
+      </head>
+      <body className="bg-surface font-body text-ink antialiased">
         <a
           href="#conteudo"
-          className="sr-only rounded-xl focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-white"
+          className="sr-only rounded-xl focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-surface"
         >
           Pular para o conteúdo
         </a>
