@@ -53,8 +53,10 @@
   --cor-surface-raised: 22 19 31;
   --cor-surface-sunken: 30 26 41;
   /* No escuro o painel de destaque sobe em vez de descer: continua sendo
-     um bloco, e o texto branco que ele já usava segue valendo. */
-  --cor-surface-invert: 26 23 38;
+     um bloco, e o texto branco que ele já usava segue valendo. O degrau
+     precisa ser generoso — com pouca diferença o portfólio encostava no
+     resto da página e não se lia como uma seção à parte. */
+  --cor-surface-invert: 33 29 48;
 
   --cor-line: 38 34 53;
   --cor-line-strong: 53 48 74;

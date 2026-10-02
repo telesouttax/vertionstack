@@ -71,7 +71,9 @@ export function SitePreview({ url, nome }: SitePreviewProps) {
         type="button"
         onClick={() => setAberto(true)}
         aria-label={`Abrir o site da ${nome} em tela cheia`}
-        className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-card outline-none transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2"
+        // O cartão vive num painel escuro: o foco e o hover usam violeta
+        // claro, que é o que aparece ali. O #7A16E0 sumiria no fundo.
+        className="group relative block w-full cursor-pointer overflow-hidden rounded-2xl border border-line bg-surface text-left shadow-card outline-none transition-all duration-300 hover:-translate-y-1 hover:border-violet-400 hover:shadow-lift focus-visible:ring-2 focus-visible:ring-violet-400 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
       >
         {/* Barra de navegador: dá o contexto de "isto é um site", não uma foto. */}
         <div className="flex items-center gap-2 border-b border-line bg-surface-raised px-3.5 py-2.5">

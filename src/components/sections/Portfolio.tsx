@@ -3,16 +3,32 @@ import { SitePreview } from "@/components/ui/SitePreview";
 import { PORTFOLIO } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
+/**
+ * Bloco escuro nos dois temas. É a única seção do site que mostra trabalho
+ * entregue, e escurecer o fundo separa ela do resto da página — além de fazer
+ * as prévias, que são sites claros, saltarem como janelas acesas.
+ */
 export function Portfolio() {
   return (
-    <section id="portfolio" className="section overflow-hidden bg-surface">
-      <div className="container-x">
+    <section
+      id="portfolio"
+      className="section relative overflow-hidden bg-surface-invert transition-colors duration-300"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-grid-invert opacity-50" />
+        <div
+          style={{ "--aurora-cor": "rgba(149,0,255,0.26)" } as React.CSSProperties}
+          className="aurora absolute -top-24 left-1/2 h-[32rem] w-[52rem] -translate-x-1/2"
+        />
+      </div>
+
+      <div className="container-x relative">
         <Reveal className="max-w-3xl">
-          <span className="eyebrow">Portfólio</span>
-          <h2 className="h2 mt-5 text-balance">
-            Sites que já estão <span className="accent">no ar</span>.
+          <span className="eyebrow text-white/50 before:bg-violet-400">Portfólio</span>
+          <h2 className="h2 mt-5 text-balance text-white">
+            Sites que já estão <span className="accent text-violet-300">no ar</span>.
           </h2>
-          <p className="lede mt-5 max-w-xl text-pretty">
+          <p className="lede mt-5 max-w-xl text-pretty text-white/65">
             Nada de imagem de exemplo: cada prévia aqui embaixo é o site de verdade. Clique em
             qualquer uma pra abrir em tela cheia e navegar como um visitante navegaria.
           </p>
@@ -27,25 +43,25 @@ export function Portfolio() {
               <Reveal key={projeto.id}>
                 {/* Cada projeto num cartão fechado: sem a moldura, os cinco
                     viravam um bloco só de texto e prévia. */}
-                <article className="rounded-panel border border-line bg-surface-raised p-5 transition-colors duration-300 sm:p-8 lg:p-10">
+                <article className="rounded-panel border border-white/10 bg-white/[0.04] p-5 backdrop-blur-sm sm:p-8 lg:p-10">
                   <div className="grid items-center gap-7 lg:grid-cols-2 lg:gap-12">
                     {/* ── Texto ────────────────────────────────────────── */}
                     <div className={cn(inverter && "lg:order-2")}>
                       <div className="flex items-baseline gap-4">
-                        <span className="nums font-mono text-label text-brand">
+                        <span className="nums font-mono text-label text-violet-300">
                           {String(indice + 1).padStart(2, "0")}
                         </span>
-                        <span className="h-px flex-1 bg-line-strong" aria-hidden="true" />
+                        <span className="h-px flex-1 bg-white/15" aria-hidden="true" />
                       </div>
 
-                      <h3 className="mt-5 font-display text-[1.75rem] font-semibold leading-tight tracking-[-0.02em] text-ink sm:text-[2rem]">
+                      <h3 className="mt-5 font-display text-[1.75rem] font-semibold leading-tight tracking-[-0.02em] text-white sm:text-[2rem]">
                         {projeto.nome}
                       </h3>
-                      <p className="mt-1.5 font-mono text-label uppercase text-ink-faint">
+                      <p className="mt-1.5 font-mono text-label uppercase text-white/50">
                         {projeto.segmento}
                       </p>
 
-                      <p className="mt-5 max-w-lg text-pretty leading-relaxed text-ink-soft">
+                      <p className="mt-5 max-w-lg text-pretty leading-relaxed text-white/65">
                         {projeto.descricao}
                       </p>
 
@@ -53,7 +69,7 @@ export function Portfolio() {
                         {projeto.entregas.map((entrega) => (
                           <li
                             key={entrega}
-                            className="rounded-full border border-line-strong bg-surface px-3.5 py-1.5 text-sm font-medium text-ink-soft"
+                            className="rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-sm font-medium text-white/75"
                           >
                             {entrega}
                           </li>
