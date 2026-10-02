@@ -5,7 +5,7 @@ import { Hero } from "@/components/sections/Hero";
 import { BusinessOrbit } from "@/components/sections/BusinessOrbit";
 import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { ProductShowcase } from "@/components/sections/ProductShowcase";
+import { Portfolio } from "@/components/sections/Portfolio";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { SpeedHighlight } from "@/components/sections/SpeedHighlight";
 import { Trust } from "@/components/sections/Trust";
@@ -21,7 +21,7 @@ export default function Home() {
         <BusinessOrbit />
         <BeforeAfter />
         <ServicesGrid />
-        <ProductShowcase />
+        <Portfolio />
         <HowItWorks />
         <SpeedHighlight />
         <Trust />

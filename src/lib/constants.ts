@@ -13,7 +13,7 @@ export const CONTACT_EMAIL = "vertionstack@gmail.com";
 
 export const NAV_LINKS = [
   { label: "Serviços", href: "#servicos" },
-  { label: "Na prática", href: "#na-pratica" },
+  { label: "Portfólio", href: "#portfolio" },
   { label: "Como funciona", href: "#como-funciona" },
   { label: "Dúvidas", href: "#duvidas" },
 ] as const;
@@ -122,20 +122,67 @@ export const HOW_IT_WORKS = [
   },
 ] as const;
 
-// Mockups ilustrativos de um negócio fictício, usados como exemplo de como fica
-// cada entrega. Serão trocados por prints reais conforme os projetos entregues.
-export const SHOWCASE_IMAGES = [
+/**
+ * Portfólio: sites que a Vertion entregou de verdade, cada um no ar e
+ * navegável dentro do próprio site. Nada de mockup ilustrativo aqui — o
+ * visitante clica e usa a página real.
+ *
+ * `url` é o endereço que o preview carrega. Se um dia um deles sair do ar ou
+ * passar a recusar iframe, o container continua funcionando: o preview some e
+ * sobra o link pra abrir em aba nova.
+ */
+export const PORTFOLIO = [
   {
-    id: "dashboard",
-    src: "/screenshots/dashboard.jpg",
-    alt: "Exemplo de dashboard de uma barbearia, com agenda e números do mês",
-    label: "Dashboard",
+    id: "rb-sheeny",
+    nome: "RB Sheeny",
+    segmento: "Construtora · Rio de Janeiro",
+    url: "https://rb-sheeby.vercel.app",
+    repo: "https://github.com/vertionstack-art/RB-Sheeby",
+    descricao:
+      "Constrói stands de venda e apartamentos decorados para lançamentos, desde 1988. O site organiza os projetos entregues por tipo e por incorporadora, com filtro, e cada projeto abre uma conversa no WhatsApp já dizendo qual é.",
+    entregas: ["Site institucional", "Portfólio com filtro", "Contato por projeto"],
   },
   {
-    id: "landing",
-    src: "/screenshots/padaria.jpg",
-    alt: "Exemplo de landing page de uma padaria, com catálogo de produtos",
-    label: "Landing page",
+    id: "aguia",
+    nome: "Águia Empreendimentos",
+    segmento: "Imobiliária · Gurupi, TO",
+    url: "https://aguiaimoveisgpi.vercel.app",
+    repo: "https://github.com/vertionstack-art/aguiaimoveisgpi",
+    descricao:
+      "Imobiliária com CRECI próprio no Tocantins. Cada imóvel tem ficha com metragem, quartos, vagas e valor, e o botão de interesse já leva pro WhatsApp identificando o imóvel.",
+    entregas: ["Catálogo de imóveis", "Ficha por unidade", "Interesse direto"],
+  },
+  {
+    id: "tower-glass",
+    nome: "Tower Glass",
+    segmento: "Pizzaria · Cassino, RS",
+    url: "https://tower-glass-7xjf.vercel.app",
+    repo: "https://github.com/vertionstack-art/tower-glass",
+    descricao:
+      "Pizzaria de rodízio e delivery no balneário do Cassino. A pessoa escolhe o sabor no cardápio e a mensagem chega pronta no WhatsApp da casa, sem ela precisar digitar nada.",
+    entregas: ["Cardápio digital", "Pedido pelo WhatsApp", "Rodízio e delivery"],
+  },
+  {
+    id: "joaquina",
+    nome: "Joaquina",
+    segmento: "Bar e restaurante · Botafogo, RJ",
+    // A raiz do projeto ainda nao tem index.html, entao o endereco que
+    // funciona e o arquivo direto.
+    url: "https://joaquina-beta.vercel.app/Joaquina.dc.html",
+    repo: "https://github.com/vertionstack-art/joaquina",
+    descricao:
+      "Bar e restaurante em Botafogo. Cardápio, horário, área de entrega e endereço numa página só, com o pedido saindo direto pro WhatsApp.",
+    entregas: ["Cardápio digital", "Pedido pelo WhatsApp", "Entrega e endereço"],
+  },
+  {
+    id: "marcos",
+    nome: "Restaurante Marcos",
+    segmento: "Restaurante · Rio Grande, RS",
+    url: "https://restaurante-maros.vercel.app",
+    repo: "https://github.com/vertionstack-art/restaurante-maros",
+    descricao:
+      "Restaurante no centro de Rio Grande. Cardápio separado por categoria, galeria do ambiente e o endereço no mapa, com o contato da casa à mão em qualquer ponto da página.",
+    entregas: ["Cardápio por categoria", "Galeria do ambiente", "Como chegar"],
   },
 ] as const;
 
