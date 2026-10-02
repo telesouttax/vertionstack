@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { ArrowUpRight, Expand, Monitor, Smartphone, X } from "lucide-react";
+import { Expand, Lock, Monitor, Smartphone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type SitePreviewProps = {
@@ -12,14 +12,6 @@ type SitePreviewProps = {
 
 /** O "papel" que o iframe pequeno renderiza antes de ser reduzido. */
 const PAPEL = { largura: 1440, altura: 900 };
-
-function dominio(url: string) {
-  try {
-    return new URL(url).hostname.replace(/^www\./, "");
-  } catch {
-    return url;
-  }
-}
 
 /**
  * Preview de um site entregue. No cartão ele é uma miniatura viva, mas
@@ -88,8 +80,14 @@ export function SitePreview({ url, nome }: SitePreviewProps) {
             <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
             <span className="h-2.5 w-2.5 rounded-full bg-line-strong" />
           </span>
-          <span className="ml-1 truncate rounded-md bg-surface px-2.5 py-1 font-mono text-[0.6875rem] text-ink-faint">
-            {dominio(url)}
+          {/* Barra de endereço sem endereço: ela existe só pra dar a leitura
+              de navegador. O domínio em si não interessa a quem visita. */}
+          <span
+            aria-hidden="true"
+            className="ml-1 flex h-[1.625rem] flex-1 items-center gap-1.5 rounded-md bg-surface px-2.5"
+          >
+            <Lock className="h-2.5 w-2.5 shrink-0 text-ink-faint/60" />
+            <span className="h-1 w-16 rounded-full bg-line-strong/70" />
           </span>
         </div>
 
@@ -191,7 +189,6 @@ function TelaCheia({ url, nome, aoFechar }: TelaCheiaProps) {
       <div className="relative mb-3 flex flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="truncate font-display text-base font-semibold text-white">{nome}</p>
-          <p className="truncate font-mono text-[0.6875rem] text-white/50">{dominio(url)}</p>
         </div>
 
         <div className="flex items-center gap-2">
@@ -217,16 +214,9 @@ function TelaCheia({ url, nome, aoFechar }: TelaCheiaProps) {
             </button>
           </div>
 
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(aba, "border border-white/15 text-white hover:border-violet-400 hover:bg-white/5")}
-          >
-            <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-            Abrir em nova aba
-          </a>
-
+          {/* Não existe "abrir em nova aba" aqui: fora do sandbox o visitante
+              chegaria no WhatsApp do cliente, que é justamente o que a trava
+              evita. */}
           <button
             ref={fecharRef}
             type="button"
@@ -247,14 +237,24 @@ function TelaCheia({ url, nome, aoFechar }: TelaCheiaProps) {
           celular ? "max-w-[420px]" : "max-w-none",
         )}
       >
-        {/* Sem `sandbox` de propósito: com ele o site abre mas não reage a
-            clique nem rola, e a graça do portfólio é justamente navegar.
-            São sites nossos, hospedados por nós. */}
-        <iframe src={url} title={`Site da ${nome}`} className="h-full w-full border-0" />
+        {/* O sandbox é o que impede o visitante de cair no WhatsApp do
+            cliente. `allow-scripts` + `allow-same-origin` deixam o site
+            funcionar inteiro — menu, filtro, rolagem — mas sem
+            `allow-popups` nem `allow-top-navigation` o navegador recusa
+            abrir aba nova e disparar protocolo externo. Nos cinco sites todo
+            link de wa.me é target="_blank" e todo telefone é `tel:`, então
+            são exatamente esses dois que ficam inertes.
+            Sem `allow-forms`: nenhum formulário de cliente é enviado daqui. */}
+        <iframe
+          src={url}
+          title={`Site da ${nome}`}
+          className="h-full w-full border-0"
+          sandbox="allow-scripts allow-same-origin"
+        />
       </div>
 
       <p className="relative mt-2.5 text-center font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-white/40">
-        Site de verdade · role e clique à vontade · Esc para fechar
+        Site de verdade · role e explore · os contatos do cliente ficam desativados
       </p>
     </div>,
     document.body,
