@@ -20,7 +20,7 @@ export function Hero() {
         <AnimatedGroup className="text-center lg:text-left">
           <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-1.5 font-mono text-label uppercase text-ink-soft backdrop-blur">
             <span className="h-1.5 w-1.5 rounded-full bg-brand-vivid" aria-hidden="true" />
-            Atendimento · Sistemas · Dashboards · Sites
+            Automações · Sistemas · Dashboards · Sites
           </span>
 
           <h1 className="mt-7 text-balance font-display font-bold leading-[0.95] tracking-[-0.045em] text-ink [font-size:clamp(2.75rem,1.6rem+4.6vw,4.75rem)]">
@@ -29,7 +29,7 @@ export function Hero() {
           </h1>
 
           <p className="mx-auto mt-7 max-w-xl text-pretty font-body text-lg leading-relaxed text-ink-soft lg:mx-0">
-            Atendimento organizado, sistemas, dashboards e sites sob medida. Construídos em
+            Automação de processos, sistemas, dashboards e sites sob medida. Construídos em
             cima do jeito que o seu negócio já funciona, não o contrário.
           </p>
 

@@ -23,7 +23,7 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-soft">
-              A camada de tecnologia que faltava no seu negócio. Atendimento, sistemas, dashboards
+              A camada de tecnologia que faltava no seu negócio. Automações, sistemas, dashboards
               e sites sob medida.
             </p>
             <p className="mt-5 font-mono text-label uppercase text-ink-faint">

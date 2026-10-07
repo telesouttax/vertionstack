@@ -1,4 +1,4 @@
-import { BarChart3, Check, Globe, LayoutGrid, MessageSquareText, type LucideIcon } from "lucide-react";
+import { BarChart3, Check, Globe, LayoutGrid, Workflow, type LucideIcon } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -7,7 +7,7 @@ import { glowProps } from "@/lib/glow";
 import { cn } from "@/lib/utils";
 
 const ICONS: Record<string, LucideIcon> = {
-  MessageSquareText,
+  Workflow,
   LayoutGrid,
   BarChart3,
   Globe,
@@ -92,16 +92,26 @@ export function ServicesGrid() {
                       aria-hidden="true"
                       className="mt-8 w-full shrink-0 rounded-2xl border border-line bg-surface-raised p-4 lg:mt-0 lg:w-56"
                     >
+                      {/* Um fluxo em três passos: é o que uma automação de
+                          processo faz, sem prometer atendimento automático. */}
                       <div className="space-y-2">
-                        <span className="block h-2 w-14 rounded-full bg-carbon-200" />
-                        <span className="block w-fit max-w-full rounded-2xl rounded-tl-sm bg-surface px-3 py-2 text-[0.6875rem] leading-snug text-ink ring-1 ring-line">
-                          Vocês abrem sábado?
+                        <span className="block font-mono text-[0.5625rem] uppercase tracking-wider text-ink-faint">
+                          Fluxo · pedido novo
                         </span>
-                        <span className="ml-auto block w-fit max-w-full rounded-2xl rounded-br-sm bg-brand px-3 py-2 text-[0.6875rem] leading-snug text-white dark:text-carbon-900">
-                          Abrimos! 9h às 15h. Quer marcar?
-                        </span>
-                        <span className="block pt-1 text-right font-mono text-[0.5625rem] uppercase tracking-wider text-brand">
-                          resposta pronta · 1 clique
+                        {["Chega o pedido", "Lança no sistema", "Avisa a equipe"].map((passo, p) => (
+                          <span
+                            key={passo}
+                            className="flex items-center gap-2 rounded-xl bg-surface px-3 py-2 text-[0.6875rem] leading-snug text-ink ring-1 ring-line"
+                          >
+                            <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand text-[0.5rem] font-bold text-white dark:text-carbon-900">
+                              {p + 1}
+                            </span>
+                            {passo}
+                          </span>
+                        ))}
+                        <span className="flex items-center justify-end gap-1 pt-1 font-mono text-[0.5625rem] uppercase tracking-wider text-brand">
+                          <Check className="h-2.5 w-2.5" aria-hidden="true" />
+                          sem ninguém no meio
                         </span>
                       </div>
                     </div>

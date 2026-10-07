@@ -42,13 +42,13 @@ export const BUSINESS_SEGMENTS = [
 
 export const SERVICES = [
   {
-    id: "atendimento",
+    id: "automacoes",
     kicker: "01",
-    title: "Organização do atendimento",
+    title: "Automação de processos",
     description:
-      "Seu WhatsApp Business configurado do jeito certo, e a equipe com resposta pronta pra não deixar ninguém esperando.",
-    bullets: ["Resposta pronta em um clique", "Etiquetas que organizam o funil", "Perfil e catálogo completos"],
-    icon: "MessageSquareText",
+      "Aquela tarefa que alguém refaz na mão toda semana passa a rodar sozinha, ligando os sistemas que você já usa.",
+    bullets: ["Seus sistemas conversando", "Tarefa repetitiva no automático", "Relatório que chega pronto"],
+    icon: "Workflow",
     featured: true,
   },
   {
@@ -74,10 +74,10 @@ export const SERVICES = [
   {
     id: "sites",
     kicker: "04",
-    title: "Sites e landing pages",
+    title: "Sites, landing pages e blog",
     description:
       "Carrega rápido no celular, aparece no Google e dá confiança pro visitante te chamar no WhatsApp.",
-    bullets: ["No ar em 3 a 7 dias", "Pronto pro Google", "Botão de WhatsApp direto"],
+    bullets: ["No ar em 3 a 7 dias", "Blog pra aparecer na busca", "Botão de WhatsApp direto"],
     icon: "Globe",
     featured: false,
   },
@@ -86,10 +86,10 @@ export const SERVICES = [
 // Opções do formulário de contato. Ficam em etiquetas curtas porque viram
 // texto dentro da mensagem do WhatsApp, não título de seção.
 export const LEAD_NEEDS = [
-  "Organização do atendimento",
+  "Automação de processos",
   "Sistema sob medida",
   "Dashboard",
-  "Site ou landing page",
+  "Site, landing page ou blog",
   "Ainda não sei",
 ] as const;
 
@@ -219,7 +219,7 @@ export const FAQS = [
   {
     pergunta: "Quanto tempo demora?",
     resposta:
-      "Sites e landing pages saem em 3 a 7 dias úteis. Dashboards e sistemas variam conforme a complexidade, e o prazo exato vai por escrito na proposta, depois que entendermos sua necessidade.",
+      "Sites, landing pages e blogs saem em 3 a 7 dias úteis. Automações, dashboards e sistemas variam conforme a complexidade, e o prazo exato vai por escrito na proposta, depois que entendermos sua necessidade.",
   },
   {
     pergunta: "Preciso entender de tecnologia?",
@@ -239,7 +239,7 @@ export const FAQS = [
   {
     pergunta: "Funciona pro meu tipo de negócio?",
     resposta:
-      "De barbearia a escritório de advocacia. Se o seu negócio tem atendimento, agenda ou controle pra organizar, quase sempre dá pra melhorar com tecnologia.",
+      "De barbearia a escritório de advocacia. Se o seu negócio tem tarefa repetitiva, agenda ou controle pra organizar, quase sempre dá pra melhorar com tecnologia.",
   },
   {
     pergunta: "Vocês atendem fora do Rio de Janeiro?",
@@ -252,18 +252,18 @@ export const BEFORE_AFTER = {
   before: {
     label: "Como está hoje",
     items: [
-      "Cada resposta digitada do zero, toda vez",
+      "A mesma tarefa refeita na mão toda semana",
       "Agenda no caderno ou na cabeça, com choque de horário",
       "Cliente procura no Google e não te acha",
       "Decisão no achismo, porque o número está espalhado",
-      "Trabalho repetitivo comendo suas horas",
+      "Um sistema que não conversa com o outro",
     ],
   },
   after: {
     label: "Como fica depois",
     items: [
-      "Atendimento organizado, sem ninguém esperando",
-      "Agendamento organizado, sem retrabalho",
+      "Processo rodando sozinho, sem retrabalho",
+      "Agendamento organizado, sem choque de horário",
       "Site que aparece e traz cliente novo",
       "Um painel com os números que importam",
       "Seu tempo de volta pro que dá dinheiro",
